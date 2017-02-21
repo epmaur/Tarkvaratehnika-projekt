@@ -49,7 +49,6 @@ li a:hover {
 [class="col-md-12"] {
   font-family: "Verdana",sans-serif;
   padding-top: 15px;
-
   padding-bottom: 15px;
   background-color: #eee;
   background-color: rgba(86,61,124,.15);
@@ -94,6 +93,42 @@ body{
   background-color: white;
   padding-left: 0px;
   padding-right: 0px;
-
-
+}
+[class="col-md-8"] {
+  font-family: "Verdana",sans-serif;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #eee;
+  background-color: rgba(86,61,124,.15);
+  border: 1px solid #ddd;
+  border: 1px solid rgba(86,61,124,.2);
+  text-align: center;
+}
+[class="col-md-6*"] {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: white;
+  text-align: center;
+  height: 220px;
+}
+.search {
+  position: relative;
+  background: #333;
+  max-width: 100%;
+  margin-top: 50px;
+  float: right;
+  padding: 50px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.search input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
 }
