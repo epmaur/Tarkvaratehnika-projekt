@@ -4,37 +4,49 @@
         <meta charset="utf-8">
         <title></title>
         <link rel="stylesheet" href="style.css">
-        <link href="../Bootsrap/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="bootstrap.css" rel="stylesheet">
+        <meta name="viewport"content="user-scalable=no, initial-scale=1, width=device-width">
 
     </head>
     <body>
-        <header>
-            <img src="header.jpg">
-        </header>
-        <ul>
-            <li><a class="active" href="#home">Avaleht</a></li>
-            <li><a href="#contact">Leitud kettad</a></li>
-            <li><a href="#about">Kaotatud kettad</a></li>
-            <li><a href="#about">Minu kuulutused</a></li>
-        </ul>
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
-                <h3>Viimati lisatud kuulutused</h3>
-                <div class="col-md-1*">
+        <div class="container pad">
+            <header>
+                <img src="header.jpg" class="img-responsive">
+            </header>
+            <nav>
+                <ul class="nav nav-justified">
+                    <li><a class="active" href="#home">Avaleht</a></li>
+                    <li><a href="#contact">Leitud kettad</a></li>
+                    <li><a href="#about">Kaotatud kettad</a></li>
+                    <li><a href="#about">Minu kuulutused</a></li>
+                </ul>
+            </nav>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Viimati lisatud kuulutused</h3>
+                    <div class="col-md-1*">
+                    </div>
+                    <div class="col-md-10*">
+                        <img src="ketas.jpg" class="pilt">
+                        <h4>Tere! Olen Mati ja käisin täna Endliga Keilas discgolfi mängimas. Kaotasin ära sellise ilusa ketta  kolmanda korvi lähedal. Kui keegi leiab, palun helistage 111222333.</h4>
+                    </div>
+                    <div class="col-md-1*">
+                    </div>
+                    <hr>
+                    <div class="col-md-1*">
+                    </div>
+                    <div class="col-md-10*">
+                        <img src="ketas.jpg" class="pilt">
+                        <h4>Tere! Olen Mati ja käisin täna Endliga Keilas discgolfi mängimas. Kaotasin ära sellise ilusa ketta  kolmanda korvi lähedal. Kui keegi leiab, palun helistage 111222333.</h4>
+                    </div>
+                    <div class="col-md-1*">
+                    </div>
+                    
                 </div>
-                <div class="col-md-10*">
-                    <img src="ketas.jpg" class="pilt">
-                    <h4>Tere! Olen Mati ja käisin täna Endliga Keilas discgolfi mängimas. Kaotasin ära sellise ilusa ketta  kolmanda korvi lähedal. Kui keegi leiab, palun helistage 111222333.</h4>
-                </div>
-                <div class="col-md-1*">
-                </div>
+                
             </div>
-            <div class="col-md-1"></div>
+            <div id="footer"></div>
         </div>
-        <div id="footer"></div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="../Bootsrap/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     </body>
 </html>
