@@ -61,7 +61,6 @@ li a:hover {
   padding-bottom: 15px;
   background-color: white;
   text-align: center;
-  height: 220px;
 }
 [class="col-md-1*"] {
   background-color: #eee;
@@ -84,9 +83,7 @@ li a:hover {
 body{
   background-image: url("background.jpg");
   background-size: 100%;
-  background-repeat: no-repeat;
-
-  
+  background-repeat: no-repeat;  
 }
 
 .container.pad {
@@ -131,4 +128,9 @@ body{
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
+}
+
+textarea {
+    width: 500px;
+    height: 100px;
 }
