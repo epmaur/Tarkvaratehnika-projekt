@@ -18,32 +18,32 @@
             <div class="row">
                         <div class="col-md-1*">
                         </div>
-                        <div class="col-md-10">
+                        <!--<div class="col-md-10">-->
                             <form id="userform" submit.delegate ="addAd()" action="#/minu_kuulutused">
                               <fieldset>
                                 <legend>Lisa uus kuulutus:</legend><br>
                                   Pealkiri:<br>
                                 <input type="text" name="title" value.bind = "adData.title"><br>
                                   Tüüp:<br>
-                                  <select name="type" value.bind = "adData.type">
-                                      <option>Otsin</option>
-                                      <option>Leidsin</option>
+                                  <select name="type" value.bind = "selectedType">
+                                      <option repeat.for = "track of types" value.bind="adData_types.track">
+                                        ${track}
+                                      </option>
                                   </select><br>
                                   Sisu:<br>
                                 <textarea name="content" value.bind = "adData.content"></textarea><br>
                                   Seotud rada: <br>
-                                <select name="track" value.bind = "adData.track">
-                                    <option>Nõmme discgolfi rada</option>
-                                    <option>Elva discgolfi rada</option>
-                                    <option>Viljandi discgolfi rada</option>
-                                    <option>Mõni neljas discgolfi rada</option>
-                                </select><br>
+                                <select value.bind = "selectedTrack">
+                                    <option repeat.for = "track of tracks" value.bind="adData.track">
+                                        ${track}
+                                    </option>
+                                </select><br><p> </p>
                                 <input type="button" value="Tühista">
                                 <input type="submit" value="Lisa">
                                 
                               </fieldset>
                             </form>
-                        </div>
+                        <!--</div>-->
                         <div class="col-md-1*">
                         </div>
                     </div>
