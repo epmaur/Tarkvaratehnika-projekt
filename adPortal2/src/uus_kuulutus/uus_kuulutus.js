@@ -2,11 +2,12 @@ import {HttpClient, json} from 'aurelia-fetch-client'
 
 export class uus_kuulutus{
     adData = {}
-/*
-	constructor() {
-		this.appName = "adPortal"
-		this.count = 0
-	}*/
+    adData_types = {}
+
+	tracks = ['Elva discgolfirada', 'Nõmme discgolfirada'];
+    types = ['Leitud', 'Kaotatud'];
+    selectedType = '';
+    selectedTrack= '';
 
 	addAd() {
 		let client = new HttpClient();
@@ -16,7 +17,7 @@ export class uus_kuulutus{
 		})
 			.then(response => response.json())
 			.then(data => {
-				console.log("Server saatis " + data.title);
+				console.log("Server saatis " + data.track);
 		});
 
 		console.log("Method executed!")
