@@ -18,7 +18,7 @@
             <div class="row">
                         <div class="col-md-1*">
                         </div>
-                        
+                        <!--<div class="col-md-10">-->
                             <form id="userform" submit.delegate ="addAd()" action="#/minu_kuulutused">
                               <fieldset>
                                 <legend>Lisa uus kuulutus:</legend><br>
@@ -26,8 +26,8 @@
                                 <input type="text" name="title" value.bind = "adData.title"><br>
                                   Tüüp:<br>
                                   <select name="type" value.bind = "adData.type">
-                                      <option repeat.for = "type of types" value.bind ="type">
-                                          ${type}
+                                      <option repeat.for = "type of types" value.bind="type">
+                                        ${type}
                                       </option>
                                   </select><br>
                                   Sisu:<br>
@@ -37,13 +37,13 @@
                                     <option repeat.for = "track of tracks" value.bind="track">
                                         ${track}
                                     </option>
-                                </select><br>
+                                </select><br><p> </p>
                                 <input type="button" value="Tühista">
-                                <input type="submit" value="Lisa">
+                                <input type="submit" value="Lisa" onclick="location.href='#/minu_kuulutused'">
                                 
                               </fieldset>
                             </form>
-                        
+                        <!--</div>-->
                         <div class="col-md-1*">
                         </div>
                     </div>

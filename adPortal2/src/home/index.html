@@ -14,30 +14,21 @@
             <div class="row">
                 <div class="col-md-12">
                     <h3>Viimati lisatud kuulutused</h3>
-                    <div class="col-md-1*">
-                    </div>
                     <div repeat.for="ad of ads">
-                    <div class="col-sm-12">
-                        <h4>${ad.title}</h4>
-                        <hr>
-                        <div class="col-sm-3">
-                            <img src="http://www.innovastore.net/tuotekuvat/600x600/600px_Black_Star_Destroyer.jpg" style="width:100px;">
-                        </div>
-                        <div class="col-sm-9">
-                            <h6>${ad.content}</h6>
-                            <br>
-                            <h5 style="text-align:left">Koht: ${ad.track}</h5>
-                            <h5 style="text-align:left">Kuulutuse tüüp: ${ad.type}</h5>
+                        <div class="col-sm-12">
+                            <h4>${ad.title}</h4>
+                            <hr>
+                            <div class="col-sm-3">
+                                <img src="http://www.innovastore.net/tuotekuvat/600x600/600px_Black_Star_Destroyer.jpg" style="width:100px;">
+                            </div>
+                            <div class="col-sm-9">
+                                <h6 style="text-align:left">${ad.content}</h6>
+                                <br>
+                                <h5 style="text-align:left">Koht: ${ad.track}</h5>
+                            </div>
                         </div>
                     </div>
                 </div>
-                    
-                <div class="col-md-1*">
-                </div>
-                    <hr>
-                    
-                </div>
-                
             </div>
             <div id="footer"></div>
         </div>

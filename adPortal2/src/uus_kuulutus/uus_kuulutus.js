@@ -1,8 +1,8 @@
 import {HttpClient, json} from 'aurelia-fetch-client'
 
 export class uus_kuulutus{
+    
     adData = {}
-
 	tracks = ['Elva discgolfirada', 'Nõmme discgolfirada'];
     types = ['otsin', 'leidsin'];
     selectedTrack= '';

@@ -16,7 +16,6 @@
                     <h3>Minu kuulutused</h3>
                     <a href="#/uus_kuulutus" class="uus_kuulutus">Lisa uus kuulutus</a>
                     <div class="row">
-                        <div class="col-md-1*">
                         <div repeat.for="ad of ads">
                             <div class="col-sm-12">
                                 <h4>${ad.title}</h4>
@@ -25,22 +24,17 @@
                                     <img src="http://www.innovastore.net/tuotekuvat/600x600/600px_Black_Star_Destroyer.jpg" style="width:100px;">
                                 </div>
                                 <div class="col-sm-9">
-                                    <h6>${ad.content}</h6>
+                                    <h6 style="text-align:left">${ad.content}</h6>
                                     <br>
                                     <h5 style="text-align:left">Koht: ${ad.track}</h5>
-                                    <h5 style="text-align:left">Kuulutuse tüüp: ${ad.type}</h5>
                                 </div>
                             </div>
-                            <div class="col-md-1*">
+                        <div class="col-md-1*">
                             <a>Eemalda</a>
                             <a>Muuda</a>
                         </div>
                         </div>
-                    </div>
-                    
-                    </div>
-                    <hr>
-                     
+                    </div>  
                 </div>
             </div>
             <div id="footer"></div>
