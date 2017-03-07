@@ -21,8 +21,12 @@ public class AdService {
 	List<Ad> getAllAds() {
 		return adRepository.findAll();
 	}
-
+/*
 	Ad getAdById(long adId) {
 		return adRepository.findOne(adId);
+	}*/
+	
+	List<Ad> getAdByType(String type) {
+		return adRepository.findByType(type);
 	}
 }

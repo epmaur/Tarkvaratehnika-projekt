@@ -28,8 +28,14 @@ public class AdController {
 		return adService.getAllAds();
 	}
 	
+/*
 	@RequestMapping(value = "/ads/{id}", method=RequestMethod.GET)
 	public Ad getAd(@PathVariable("id") long adId) {
 		return adService.getAdById(adId);
+	}*/
+	
+	@RequestMapping(value = "/ads/{type}", method=RequestMethod.GET)
+	public List<Ad> getAdByType(@PathVariable("type") String type) {
+		return adService.getAdByType(type);
 	}
 }
