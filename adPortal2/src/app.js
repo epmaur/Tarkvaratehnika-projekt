@@ -1,8 +1,8 @@
 export class App {
 configureRouter(config, router) {
     this.router = router;
-    config.title = 'DiscSeeker';
- 
+    config.title = 'My Aurelia äpp';
+
     config.map([
       { route: ['', 'home'],       name: 'home',       moduleId: 'home/index' },
       { route: 'kaotatud_kettad', name: 'kaotatud_kettad',  moduleId: './kaotatud_kettad/kaotatud_kettad',   nav: true },

@@ -18,32 +18,32 @@
             <div class="row">
                         <div class="col-md-1*">
                         </div>
-                        <!--<div class="col-md-10">-->
+                        
                             <form id="userform" submit.delegate ="addAd()" action="#/minu_kuulutused">
                               <fieldset>
                                 <legend>Lisa uus kuulutus:</legend><br>
                                   Pealkiri:<br>
                                 <input type="text" name="title" value.bind = "adData.title"><br>
                                   Tüüp:<br>
-                                  <select name="type" value.bind = "selectedType">
-                                      <option repeat.for = "track of types" value.bind="adData_types.track">
-                                        ${track}
+                                  <select name="type" value.bind = "adData.type">
+                                      <option repeat.for = "type of types" value.bind ="type">
+                                          ${type}
                                       </option>
                                   </select><br>
                                   Sisu:<br>
                                 <textarea name="content" value.bind = "adData.content"></textarea><br>
                                   Seotud rada: <br>
-                                <select value.bind = "selectedTrack">
-                                    <option repeat.for = "track of tracks" value.bind="adData.track">
+                                <select value.bind = "adData.track">
+                                    <option repeat.for = "track of tracks" value.bind="track">
                                         ${track}
                                     </option>
-                                </select><br><p> </p>
+                                </select><br>
                                 <input type="button" value="Tühista">
-                                <input type="submit" value="Lisa" onclick="location.href='#/minu_kuulutused'">
+                                <input type="submit" value="Lisa">
                                 
                               </fieldset>
                             </form>
-                        <!--</div>-->
+                        
                         <div class="col-md-1*">
                         </div>
                     </div>

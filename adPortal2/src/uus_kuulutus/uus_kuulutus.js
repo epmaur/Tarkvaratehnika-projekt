@@ -2,11 +2,9 @@ import {HttpClient, json} from 'aurelia-fetch-client'
 
 export class uus_kuulutus{
     adData = {}
-    adData_types = {}
 
 	tracks = ['Elva discgolfirada', 'Nõmme discgolfirada'];
-    types = ['Leitud', 'Kaotatud'];
-    selectedType = '';
+    types = ['otsin', 'leidsin'];
     selectedTrack= '';
 
 	addAd() {
