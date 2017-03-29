@@ -162,3 +162,19 @@ fieldset {
   text-align: center;
   margin-bottom: 15px;
 }
+
+#image{position:absolute;z-index:1;}
+
+#container{
+    display:inline-block;
+    box-sizing: content-box;
+    margin: 0 auto; 
+    position:relative; 
+    border:5px solid black; 
+    border-radius: 10px; 
+    box-shadow: 0 5px 50px #333}
+
+#myCanvas{
+    position:relative;
+    z-index:20;
+}
