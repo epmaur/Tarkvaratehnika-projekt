@@ -1,3 +1,4 @@
+
 export class App {
 configureRouter(config, router) {
     this.router = router;
@@ -9,7 +10,7 @@ configureRouter(config, router) {
       { route: 'leitud_kettad', name: 'leitud_kettad',  moduleId: './leitud_kettad/leitud_kettad',   nav: true },
       { route: 'minu_kuulutused', name: 'minu_kuulutused',  moduleId: './minu_kuulutused/minu_kuulutused',   nav: true },
       { route: 'uus_kuulutus', name: 'uus_kuulutus',  moduleId: './uus_kuulutus/uus_kuulutus',   nav: true },
-      { route: 'rajakaardi_redigeerimine', name: 'rajakaardi_redigeerimine',  moduleId: './rajakaardi_redigeerimine/rajakaardi_redigeerimine',  nav: true }
+      { route: 'rajakaardi_redigeerimine', name: 'rajakaardi_redigeerimine', moduleId: './rajakaardi_redigeerimine/rajakaardi_redigeerimine',  nav: true }
     ]);
   }
 }

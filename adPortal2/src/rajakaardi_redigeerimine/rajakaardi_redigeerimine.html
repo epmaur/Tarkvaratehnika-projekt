@@ -8,39 +8,34 @@
                     <li><a href="index.html">Avaleht</a></li>
                     <li><a href="#/leitud_kettad">Leitud kettad</a></li>
                     <li><a href="#/kaotatud_kettad">Kaotatud kettad</a></li>
-                    <li><a class="active" href="#/minu_kuulutused">Minu kuulutused</a></li>
+                    <li><a href="#/minu_kuulutused">Minu kuulutused</a></li>
                 </ul>
             </nav>
             <div class="row">
                 <div class="col-md-12">
                     <h3>Raja redigeerimine</h3>
                     <div id="container">
-                        <img id='image' src="../src/rajakaardi_redigeerimine/jjkaart.jpg" alt="" width="1000" height="550" />
-                        <canvas id="myCanvas" width="1000" height="650"></canvas>
+                        <img id='image' src="../pildid/jjkaart.jpg" alt="" width="1000" height="550" />
+                        <canvas id="myCanvas" width="1000" height="650" mousedown.delegate="canvasMouseDown($event, $this)" mouseleave.delegate=canvasMouseLeave($event)
+                                mouseup.delegate=canvasMouseUp($event) mousemove.delegate="canvasMouseMove($event, $this)"></canvas>
+                    
                     </div>
                     <div align="center">
                         <br /><br />
-                        <button onclick="javascript:clearArea();return false;">Clear Area</button>
-                        Line width : <select id="selWidth">
-                            <option value="1">1</option>
-                            <option value="3"  selected="selected">3</option>
-                            <option value="5">5</option>
-                            <option value="7">7</option>
-                            <option value="9">9</option>
-                            <option value="11">11</option>
+                        <button click.delegate="clearArea()">Clear Area</button>
+                        Line width : <select value.bind="data.width">
+                            <option repeat.for ="width of widths" model.bind="width">
+                                ${width}
+                        </option>
                         </select>
-                        Color : <select id="selColor">
-                            <option value="black">black</option>
-                            <option value="blue">blue</option>
-                            <option value="red" selected="selected">red</option>
-                            <option value="green">green</option>
-                            <option value="yellow">yellow</option>
-                            <option value="gray">gray</option>
+                        Color : <select value.bind="data.color">
+                            <option repeat.for="color of colors" model.bind="color">
+                                ${color}
+                        </option>
                         </select>
                     </div>
                 </div>
             </div>
             <div id="footer"></div>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </template>
