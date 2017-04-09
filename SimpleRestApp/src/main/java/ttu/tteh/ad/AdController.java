@@ -38,4 +38,10 @@ public class AdController {
 	public List<Ad> getAdByType(@PathVariable("type") String type) {
 		return adService.getAdByType(type);
 	}
+	
+	@RequestMapping(value="/ads/params", method=RequestMethod.POST,
+			consumes = "application/json")
+	public List<Ad> filterAd(@RequestBody AdHelper adHelper){
+		return adService.filterAd(adHelper);
+	}
 }

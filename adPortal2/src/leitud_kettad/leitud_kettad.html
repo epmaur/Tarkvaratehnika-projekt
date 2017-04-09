@@ -18,15 +18,16 @@
                 </div>
                 <div repeat.for="ad of ads">
                     <div class="col-sm-12">
-                        <h4>${ad.title}</h4>
+                        <h4>${ad.disc}</h4>
                         <hr>
                         <div class="col-sm-3">
                             <img src="http://www.innovastore.net/tuotekuvat/600x600/600px_Black_Star_Destroyer.jpg" style="width:100px;">
                         </div>
                         <div class="col-sm-9">
-                            <h6 style="text-align:left">${ad.content}</h6>
+                            <h5 style="text-align:left">${ad.content}</h5>
                             <br>
-                            <h5 style="text-align:left">Koht: ${ad.track}</h5>
+                            <h6 style="text-align:left">Koht: ${ad.track}</h6>
+                            <h6 style="text-align:left">Värv: ${ad.color}</h6>
                         </div>
                     </div> 
                 </div>
@@ -43,12 +44,13 @@
                 </div>-->
             </div>
             <div class="col-md-4">
-                 <form class="search">
+                 <form class="search" submit.delegate= "filterAds()">
                     <h3 style="color:white">Otsi kuulutust</h3>
-                    <input type="text" placeholder="koht">
-                    <input type="text" placeholder="ketas">
-                    <input type="text" placeholder="värv">
-                    <button>Otsi</button>
+                    <input type="text" value="leidsin" placeholder="Leidsin ketta" value.bind="filterData.type" disabled>
+                    <input type="text" placeholder="rada" value.bind = "filterData.track">
+                    <input type="text" placeholder="ketas" value.bind = "filterData.disc">
+                    <input type="text" placeholder="värv" value.bind = "filterData.color">
+                    <input type="submit" value = "Otsi">
                 </form>
             </div>
 

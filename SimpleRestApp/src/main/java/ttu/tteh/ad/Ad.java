@@ -14,18 +14,30 @@ public class Ad {
 	@Id
 	@GeneratedValue
 	long id;
-	String title;
+	String disc;
 	String type;
 	String content;
 	String track;
+	String color;
 	
 	
-	public Ad(String title, String type, String content, String track) {
+	public Ad(String disc, String type, String content, String track, String color) {
 		super();
-		this.title = title;
+		this.disc = disc;
 		this.type = type;
 		this.content = content;
 		this.track = track;
+		this.color = color;
+	}
+
+
+	public String getColor() {
+		return color;
+	}
+
+
+	public void setColor(String color) {
+		this.color = color;
 	}
 
 
@@ -44,13 +56,13 @@ public class Ad {
 	}
 
 
-	public String getTitle() {
-		return title;
+	public String getDisc() {
+		return disc;
 	}
 
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setDisc(String disc) {
+		this.disc = disc;
 	}
 
 

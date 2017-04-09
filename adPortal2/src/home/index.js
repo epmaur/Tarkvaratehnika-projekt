@@ -1,5 +1,6 @@
 import {HttpClient, json} from 'aurelia-fetch-client'
 export class Home {
+    
     activate() {
         this.ads = []
         let client = new HttpClient();
@@ -8,5 +9,5 @@ export class Home {
 			.then(ads => this.ads = ads);
 
 		};
-
+    
 }

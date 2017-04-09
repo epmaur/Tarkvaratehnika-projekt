@@ -22,8 +22,10 @@
                             <form id="userform" submit.delegate ="addAd()" action="#/minu_kuulutused">
                               <fieldset>
                                 <legend>Lisa uus kuulutus:</legend><br>
-                                  Pealkiri:<br>
-                                <input type="text" name="title" value.bind = "adData.title"><br>
+                                  Ketas:<br>
+                                <input type="text" name="disc" value.bind = "adData.disc"><br>
+                                  Värv:<br>
+                                <input type="text" name="color" value.bind = "adData.color"><br>
                                   Tüüp:<br>
                                   <select name="type" value.bind = "adData.type">
                                       <option repeat.for = "type of types" value.bind="type">
