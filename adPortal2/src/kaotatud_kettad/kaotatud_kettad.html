@@ -32,15 +32,16 @@
                 </div>
                 <div class="col-md-4">
                      <form class="search" submit.delegate= "filterAds()">
-                    <h3 style="color:white">Otsi kuulutust</h3>
-                    <select name="type" value.bind = "filterData.type">
+                    <h3 style="color:white">Otsing</h3>
+                    <select name="type" style="width:100%" value.bind = "filterData.type">
                         <option repeat.for = "type of types" value.bind="type">
                             ${type}
                         </option>
                     </select><br>
-                    <input type="text" placeholder="rada" value.bind = "filterData.track">
-                    <input type="text" placeholder="ketas" value.bind = "filterData.disc">
-                    <input type="text" placeholder="värv" value.bind = "filterData.color">
+                    <br>
+                    <input type="text" placeholder="Rada" value.bind = "filterData.track">
+                    <input type="text" placeholder="Ketas" value.bind = "filterData.disc">
+                    <input type="text" placeholder="Värv" value.bind = "filterData.color">
                     <input type="submit" value = "Otsi">
                 </form>
                 </div>     
