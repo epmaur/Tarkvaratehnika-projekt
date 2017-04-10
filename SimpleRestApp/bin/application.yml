@@ -1,0 +1,9 @@
+spring:
+    datasource:
+        url: jdbc:mariadb://127.0.0.1:3306/myapp
+        username: root
+        password: tupsud
+
+    jpa:
+        hibernate:
+            ddl-auto: update

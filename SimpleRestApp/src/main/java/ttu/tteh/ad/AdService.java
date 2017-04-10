@@ -33,8 +33,7 @@ public class AdService {
 		if (adHelper.getColor() == null || adHelper.getColor().equals("")){
 			return true;
 		} else {
-			return ad.getColor().toLowerCase().equals(adHelper.getColor().toLowerCase()) 
-					|| ad.getColor().toLowerCase().contains(adHelper.getColor().toLowerCase());
+			return ad.getColor().toLowerCase().equals(adHelper.getColor().toLowerCase());
 		}
 	}
 	
