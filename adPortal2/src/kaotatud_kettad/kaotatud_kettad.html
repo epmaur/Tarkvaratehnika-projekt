@@ -33,7 +33,11 @@
                 <div class="col-md-4">
                      <form class="search" submit.delegate= "filterAds()">
                     <h3 style="color:white">Otsi kuulutust</h3>
-                    <input type="text" placeholder="Otsin ketast" value.bind="filterData.type" value="otsin" disabled>
+                    <select name="type" value.bind = "filterData.type">
+                        <option repeat.for = "type of types" value.bind="type">
+                            ${type}
+                        </option>
+                    </select><br>
                     <input type="text" placeholder="rada" value.bind = "filterData.track">
                     <input type="text" placeholder="ketas" value.bind = "filterData.disc">
                     <input type="text" placeholder="värv" value.bind = "filterData.color">

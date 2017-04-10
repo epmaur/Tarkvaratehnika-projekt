@@ -4,7 +4,7 @@ export class uus_kuulutus{
     
     adData = {}
 	tracks = ['Elva discgolfirada', 'Nõmme discgolfirada'];
-    types = ['otsin', 'leidsin'];
+    types = ['kaotatud', 'leitud'];
     selectedTrack= '';
 
 	addAd() {

@@ -3,12 +3,12 @@ import {HttpClient, json} from 'aurelia-fetch-client'
 export class leitud_kettad{
     filterData = {}
     ads = []
-    
+    types = ['leitud', 'kaotatud'];
 
     activate() {
         //this.ads = []
         let client = new HttpClient();
-        client.fetch('http://localhost:8080/ads/leidsin')
+        client.fetch('http://localhost:8080/ads/leitud')
 			.then(response => response.json())
 			.then(ads => this.ads = ads);
 
