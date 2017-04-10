@@ -18,6 +18,8 @@ public class AdTest {
 	private AdHelper adHelperCase;
 	private AdHelper adHelperContains;
 	private AdHelper adHelperIncorrect;
+	private AdHelper adHelperNull;
+	private AdHelper adHelperEmpty;
 	
 	@Before
 	public void initObjects() {
@@ -27,7 +29,10 @@ public class AdTest {
 		adHelperCase = new AdHelper("inNOva Destroyer", "elVa discgOlfiRada", "rohELine", "LEITUD");
 		adHelperContains = new AdHelper("Innova", "Elva", "roheline", "leitud");
 		adHelperIncorrect = new AdHelper("Mamba", "Nõmme discgolfirada", "roosa", "kaotatud");
+		adHelperNull = new AdHelper(null, null, null, null);
+		adHelperEmpty = new AdHelper("", "", "", "");
 	}
+	
 	
 	@Test
 	public void testDiscCorrect() {
@@ -47,6 +52,16 @@ public class AdTest {
 	@Test
 	public void testDiscIncorrect() {
 		assertEquals(false, adService.discMatch(ad, adHelperIncorrect));
+	}
+	
+	@Test
+	public void testDiscNull() {
+		assertEquals(true, adService.discMatch(ad, adHelperNull));
+	}
+	
+	@Test
+	public void testDiscEmpty() {
+		assertEquals(true, adService.discMatch(ad, adHelperEmpty));
 	}
 	
 	@Test
@@ -70,6 +85,16 @@ public class AdTest {
 	}
 	
 	@Test
+	public void testTrackNull() {
+		assertEquals(true, adService.trackMatch(ad, adHelperNull));
+	}
+	
+	@Test
+	public void testTrackEmpty() {
+		assertEquals(true, adService.trackMatch(ad, adHelperEmpty));
+	}
+	
+	@Test
 	public void testColorCorrect() {
 		assertEquals(true, adService.colorMatch(ad, adHelperCorrect));
 	}
@@ -85,6 +110,16 @@ public class AdTest {
 	}
 	
 	@Test
+	public void testColorNull() {
+		assertEquals(true, adService.colorMatch(ad, adHelperNull));
+	}
+	
+	@Test
+	public void testColorEmpty() {
+		assertEquals(true, adService.colorMatch(ad, adHelperEmpty));
+	}
+	
+	@Test
 	public void testTypeCorrect() {
 		assertEquals(true, adService.typeMatch(ad, adHelperCorrect));
 	}
@@ -96,6 +131,16 @@ public class AdTest {
 	@Test
 	public void testTypeIncorrect() {
 		assertEquals(false, adService.typeMatch(ad, adHelperIncorrect));
+	}
+	
+	@Test
+	public void testTypeNull() {
+		assertEquals(true, adService.typeMatch(ad, adHelperNull));
+	}
+	
+	@Test
+	public void testTypeEmpty() {
+		assertEquals(true, adService.typeMatch(ad, adHelperEmpty));
 	}
 
 }
