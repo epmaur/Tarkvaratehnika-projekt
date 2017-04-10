@@ -29,7 +29,7 @@ public class AdService {
 		.collect(Collectors.toList());
 		
 	}
-	private boolean colorMatch(Ad ad, AdHelper adHelper){
+	public boolean colorMatch(Ad ad, AdHelper adHelper){
 		if (adHelper.getColor() == null || adHelper.getColor().equals("")){
 			return true;
 		} else {
@@ -38,7 +38,7 @@ public class AdService {
 		}
 	}
 	
-	private boolean discMatch(Ad ad, AdHelper adHelper){
+	public boolean discMatch(Ad ad, AdHelper adHelper){
 		if (adHelper.getDisc() == null || adHelper.getDisc().equals("")){
 			return true;
 		} else {
@@ -47,7 +47,7 @@ public class AdService {
 		}
 	}
 	
-	private boolean trackMatch(Ad ad, AdHelper adHelper){
+	public boolean trackMatch(Ad ad, AdHelper adHelper){
 		if (adHelper.getTrack() == null || adHelper.getTrack().equals("")){
 			return true;
 		} else {
@@ -56,7 +56,7 @@ public class AdService {
 		}
 	}
 	
-	private boolean typeMatch(Ad ad, AdHelper adHelper){
+	public boolean typeMatch(Ad ad, AdHelper adHelper){
 		if (adHelper.getType() == null || adHelper.getType().equals("")){
 			return true;
 		} else {

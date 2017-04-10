@@ -4,9 +4,12 @@ import {HttpClient, json} from 'aurelia-fetch-client';
 export class rajakaardi_redigeerimine {
     attached() {
         this.init()
+        this.addPic()
     }
     data={};
+
     colors = ['red', 'black','yellow','green','blue'];
+    maps = [];
     widths = ['1','3','5','7','9'];
     
     
@@ -73,6 +76,15 @@ export class rajakaardi_redigeerimine {
         this.ctx.setTransform(1, 0, 0, 1, 0, 0);
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
     }
+    addPic() {
+        
+		let client = new HttpClient();
+		client.fetch('http://localhost:8080/maps/Alatskivi') 
+			.then(response => response.json())
+			.then(data => this.maps = data);
+            
+        console.log(this.maps);
+	};	
     
     
 }
