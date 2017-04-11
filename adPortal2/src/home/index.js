@@ -8,6 +8,7 @@ export class Home {
 			.then(response => response.json())
 			.then(ads => this.ads = ads);
 
+
 		};
     
 }

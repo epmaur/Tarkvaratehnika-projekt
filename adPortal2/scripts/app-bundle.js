@@ -76,6 +76,40 @@ define('main',['exports', './environment'], function (exports, _environment) {
     });
   }
 });
+define('home/index',['exports', 'aurelia-fetch-client'], function (exports, _aureliaFetchClient) {
+    'use strict';
+
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    exports.Home = undefined;
+
+    function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+        }
+    }
+
+    var Home = exports.Home = function () {
+        function Home() {
+            _classCallCheck(this, Home);
+        }
+
+        Home.prototype.activate = function activate() {
+            var _this = this;
+
+            this.ads = [];
+            var client = new _aureliaFetchClient.HttpClient();
+            client.fetch('http://localhost:8080/ads/').then(function (response) {
+                return response.json();
+            }).then(function (ads) {
+                return _this.ads = ads;
+            });
+        };
+
+        return Home;
+    }();
+});
 define('kaotatud_kettad/kaotatud_kettad',['exports', 'aurelia-fetch-client'], function (exports, _aureliaFetchClient) {
     'use strict';
 
@@ -125,40 +159,6 @@ define('kaotatud_kettad/kaotatud_kettad',['exports', 'aurelia-fetch-client'], fu
         };
 
         return kaotatud_kettad;
-    }();
-});
-define('home/index',['exports', 'aurelia-fetch-client'], function (exports, _aureliaFetchClient) {
-    'use strict';
-
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
-    exports.Home = undefined;
-
-    function _classCallCheck(instance, Constructor) {
-        if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
-        }
-    }
-
-    var Home = exports.Home = function () {
-        function Home() {
-            _classCallCheck(this, Home);
-        }
-
-        Home.prototype.activate = function activate() {
-            var _this = this;
-
-            this.ads = [];
-            var client = new _aureliaFetchClient.HttpClient();
-            client.fetch('http://localhost:8080/ads/').then(function (response) {
-                return response.json();
-            }).then(function (ads) {
-                return _this.ads = ads;
-            });
-        };
-
-        return Home;
     }();
 });
 define('leitud_kettad/leitud_kettad',['exports', 'aurelia-fetch-client'], function (exports, _aureliaFetchClient) {
@@ -430,14 +430,14 @@ define('uus_kuulutus/uus_kuulutus',['exports', 'aurelia-fetch-client', 'aurelia-
 			}).catch(function (error) {
 				return console.log(error);
 			});
-			console.log(this.adData.file);
+			console.log(this.adData.file[0]);
 		};
 
 		return uus_kuulutus;
 	}()) || _class);
 });
 define('text!app.html', ['module'], function(module) { module.exports = "<template>\r\n<router-view></router-view>\r\n</template>\r\n"; });
-define('text!home/index.html', ['module'], function(module) { module.exports = "<template>\r\n\t<div class=\"container pad\">\r\n            <header>\r\n                <img src=\"../pildid/header.jpg\" class=\"img-responsive\">\r\n            </header>\r\n            <nav>\r\n                <ul class=\"nav nav-justified\">\r\n                    <li><a class=\"active\" href=\"index.html\">Avaleht</a></li>\r\n                    <li><a href=\"#/leitud_kettad\">Leitud kettad</a></li>\r\n                    <li><a href=\"#/kaotatud_kettad\">Kaotatud kettad</a></li>\r\n                    <li><a href=\"#/minu_kuulutused\">Minu kuulutused</a></li>\r\n                </ul>\r\n            </nav>\r\n            <div class=\"row\">\r\n                <div class=\"col-md-12\">\r\n                    <h3>Viimati lisatud kuulutused</h3>\r\n                    <div repeat.for=\"ad of ads\">\r\n                        <div class=\"col-sm-12\">\r\n                            <h4>${ad.title}</h4>\r\n                            <hr>\r\n                            <div class=\"col-sm-3\">\r\n                                <img src=\"http://www.innovastore.net/tuotekuvat/600x600/600px_Black_Star_Destroyer.jpg\" style=\"width:100px;\">\r\n                            </div>\r\n                            <div class=\"col-sm-9\">\r\n                                <h5 style=\"text-align:left\">${ad.content}</h5>\r\n                                <br>\r\n                                <h6 style=\"text-align:left\">Koht: ${ad.track}</h6>\r\n                                <h6 style=\"text-align:left\">Värv: ${ad.color}</h6>\r\n                                <h6 style=\"text-align:left\">Tüüp: ${ad.type}</h6>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div id=\"footer\"></div>\r\n        </div>\r\n        \r\n</template>"; });
+define('text!home/index.html', ['module'], function(module) { module.exports = "<template>\r\n\t<div class=\"container pad\">\r\n            <header>\r\n                <img src=\"../pildid/header.jpg\" class=\"img-responsive\">\r\n            </header>\r\n            <nav>\r\n                <ul class=\"nav nav-justified\">\r\n                    <li><a class=\"active\" href=\"index.html\">Avaleht</a></li>\r\n                    <li><a href=\"#/leitud_kettad\">Leitud kettad</a></li>\r\n                    <li><a href=\"#/kaotatud_kettad\">Kaotatud kettad</a></li>\r\n                    <li><a href=\"#/minu_kuulutused\">Minu kuulutused</a></li>\r\n                </ul>\r\n            </nav>\r\n            <div class=\"row\">\r\n                <div class=\"col-md-12\">\r\n                    <h3>Viimati lisatud kuulutused</h3>\r\n                    <div repeat.for=\"ad of ads\">\r\n                        <div class=\"col-sm-12\">\r\n                            <h4>${ad.disc}</h4>\r\n                            <hr>\r\n                            <div class=\"col-sm-3\">\r\n                                <img src=${ad.file} style=\"width:100px;\">\r\n                            </div>\r\n                            <div class=\"col-sm-9\">\r\n                                <h5 style=\"text-align:left\">${ad.content}</h5>\r\n                                <br>\r\n                                <h6 style=\"text-align:left\">Koht: ${ad.track}</h6>\r\n                                <h6 style=\"text-align:left\">Värv: ${ad.color}</h6>\r\n                                <h6 style=\"text-align:left\">Tüüp: ${ad.type}</h6>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div id=\"footer\"></div>\r\n        </div>\r\n        \r\n</template>"; });
 define('text!kaotatud_kettad/kaotatud_kettad.html', ['module'], function(module) { module.exports = "<template>\r\n        <div class=\"container pad\">\r\n            <header>\r\n                <img src=\"../pildid/header.jpg\" class=\"img-responsive\">\r\n            </header>\r\n            <nav>\r\n                <ul class=\"nav nav-justified\">\r\n                    <li><a href=\"index.html\">Avaleht</a></li>\r\n                    <li><a href=\"#/leitud_kettad\">Leitud kettad</a></li>\r\n                    <li><a class=\"active\" href=\"kaotatud_kettad\">Kaotatud kettad</a></li>\r\n                    <li><a href=\"#/minu_kuulutused\">Minu kuulutused</a></li>\r\n                </ul>\r\n            </nav>\r\n            <div class=\"row\">\r\n                <div class=\"col-md-8\">\r\n                    <h3>Kaotatud Kettad</h3>\r\n                    <div repeat.for=\"ad of ads\">\r\n                        <div class=\"col-sm-12\">\r\n                            <h4>${ad.title}</h4>\r\n                            <hr>\r\n                            <div class=\"col-sm-3\">\r\n                                <img src=\"http://www.innovastore.net/tuotekuvat/600x600/600px_Black_Star_Destroyer.jpg\" style=\"width:100px;\">\r\n                            </div>\r\n                            <div class=\"col-sm-9\">\r\n                                <h5 style=\"text-align:left\">${ad.content}</h5>\r\n                                <br>\r\n                                <h6 style=\"text-align:left\">Koht: ${ad.track}</h6>\r\n                                <h6 style=\"text-align:left\">Värv: ${ad.color}</h6>\r\n                            </div>\r\n                        </div> \r\n                    </div>\r\n                </div>\r\n                <div class=\"col-md-4\">\r\n                     <form class=\"search\" submit.delegate= \"filterAds()\">\r\n                    <h3 style=\"color:white\">Otsing</h3>\r\n                    <select name=\"type\" style=\"width:100%\" value.bind = \"filterData.type\">\r\n                        <option repeat.for = \"type of types\" value.bind=\"type\">\r\n                            ${type}\r\n                        </option>\r\n                    </select><br>\r\n                    <br>\r\n                    <input type=\"text\" placeholder=\"Rada\" value.bind = \"filterData.track\">\r\n                    <input type=\"text\" placeholder=\"Ketas\" value.bind = \"filterData.disc\">\r\n                    <input type=\"text\" placeholder=\"Värv\" value.bind = \"filterData.color\">\r\n                    <input type=\"submit\" value = \"Otsi\">\r\n                </form>\r\n                </div>     \r\n            </div>\r\n            <div id=\"footer\"></div>\r\n        </div>\r\n        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\r\n</template>\r\n"; });
 define('text!leitud_kettad/leitud_kettad.html', ['module'], function(module) { module.exports = "<template>\r\n    <div class=\"container pad\">\r\n        <header>\r\n            <img src=\"../pildid/header.jpg\" class=\"img-responsive\">\r\n        </header>\r\n        <nav>\r\n            <ul class=\"nav nav-justified\">\r\n                <li><a href=\"index.html\">Avaleht</a></li>\r\n                <li><a class=\"active\" href=\"leitud_kettad\">Leitud kettad</a></li>\r\n                <li><a href=\"#/kaotatud_kettad\">Kaotatud kettad</a></li>\r\n                <li><a href=\"#/minu_kuulutused\">Minu kuulutused</a></li>\r\n            </ul>\r\n        </nav>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-8\">\r\n                <h3>Leitud Kettad</h3>\r\n                <div class=\"col-md-1*\">\r\n                </div>\r\n                <div repeat.for=\"ad of ads\">\r\n                    <div class=\"col-sm-12\">\r\n                        <h4>${ad.disc}</h4>\r\n                        <hr>\r\n                        <div class=\"col-sm-3\">\r\n                            <img src=\"http://www.innovastore.net/tuotekuvat/600x600/600px_Black_Star_Destroyer.jpg\" style=\"width:100px;\">\r\n                        </div>\r\n                        <div class=\"col-sm-9\">\r\n                            <h5 style=\"text-align:left\">${ad.content}</h5>\r\n                            <br>\r\n                            <h6 style=\"text-align:left\">Koht: ${ad.track}</h6>\r\n                            <h6 style=\"text-align:left\">Värv: ${ad.color}</h6>\r\n                        </div>\r\n                    </div> \r\n                </div>\r\n                <div class=\"col-md-1*\">\r\n                </div>\r\n             <!---   <hr>\r\n                <div class=\"col-md-1*\">\r\n                </div>\r\n                <div class=\"col-md-6*\">\r\n                    <img src=\"../pildid/ketas.jpg\" class=\"pilt\">\r\n                    <h4>Leitud punane Dominator. Asukoht Keila. Võta ühendust, kui tead täpset ketta kaotuskohta ja andmeid. Tel. 5171553</h4>\r\n                </div>\r\n                <div class=\"col-md-1*\">\r\n                </div>-->\r\n            </div>\r\n            <div class=\"col-md-4\">\r\n                 <form class=\"search\" submit.delegate= \"filterAds()\">\r\n                    <h3 style=\"color:white\">Otsing</h3>\r\n                    <select name=\"type\" style=\"width:100%\" value.bind = \"filterData.type\">\r\n                        <option repeat.for = \"type of types\" value.bind=\"type\">\r\n                            ${type}\r\n                        </option>\r\n                    </select><br>\r\n                    <br>\r\n                    <input type=\"text\" placeholder=\"Rada\" value.bind = \"filterData.track\">\r\n                    <input type=\"text\" placeholder=\"Ketas\" value.bind = \"filterData.disc\">\r\n                    <input type=\"text\" placeholder=\"Värv\" value.bind = \"filterData.color\">\r\n                    <input type=\"submit\" value = \"Otsi\">\r\n                </form>\r\n            </div>\r\n\r\n\r\n\r\n        </div>\r\n        <div id=\"footer\"></div>\r\n    </div>\r\n    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\r\n    <script>${showUsers()}</script>\r\n</template>\r\n"; });
 define('text!minu_kuulutused/minu_kuulutused.html', ['module'], function(module) { module.exports = "<template>\r\n    <div class=\"container pad\">\r\n            <header>\r\n                <img src=\"../pildid/header.jpg\" class=\"img-responsive\">\r\n            </header>\r\n            <nav>\r\n                <ul class=\"nav nav-justified\">\r\n                    <li><a href=\"index.html\">Avaleht</a></li>\r\n                    <li><a href=\"#/leitud_kettad\">Leitud kettad</a></li>\r\n                    <li><a href=\"#/kaotatud_kettad\">Kaotatud kettad</a></li>\r\n                    <li><a class=\"active\" href=\"#/minu_kuulutused\">Minu kuulutused</a></li>\r\n                </ul>\r\n            </nav>\r\n            <div class=\"row\">\r\n                <div class=\"col-md-12\">\r\n                    <h3>Minu kuulutused</h3>\r\n                    <a href=\"#/uus_kuulutus\" class=\"uus_kuulutus\">Lisa uus kuulutus</a>\r\n                    <div class=\"row\">\r\n                        <div repeat.for=\"ad of ads\">\r\n                            <div class=\"col-sm-12\">\r\n                                <h4>${ad.title}</h4>\r\n                                <hr>\r\n                                <div class=\"col-sm-3\">\r\n                                    <img src=\"http://www.innovastore.net/tuotekuvat/600x600/600px_Black_Star_Destroyer.jpg\" style=\"width:100px;\">\r\n                                </div>\r\n                                <div class=\"col-sm-9\">\r\n                                    <h5 style=\"text-align:center\">${ad.content}</h5>\r\n                                    <br>\r\n                                    <h6 style=\"text-align:left\">Koht: ${ad.track}</h6>\r\n                                    <h6 style=\"text-align:left\">Värv: ${ad.color}</h6>\r\n                                </div>\r\n                            </div>\r\n                        <div class=\"col-md-1*\">\r\n                            <a>Eemalda</a>\r\n                            <a>Muuda</a>\r\n                        </div>\r\n                        </div>\r\n                    </div>  \r\n                </div>\r\n            </div>\r\n            <div id=\"footer\"></div>\r\n        </div>\r\n        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\r\n</template>"; });
