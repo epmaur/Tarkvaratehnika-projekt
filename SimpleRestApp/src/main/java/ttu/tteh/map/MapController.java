@@ -34,9 +34,9 @@ public class MapController {
 	}
   
     
-    @RequestMapping(value= "/maps/{mapLink}", method=RequestMethod.GET)
-	public Map getMapByMapLink(@PathVariable("mapLink")String mapLink) {
-		return mapService.getMapByMapLink(mapLink);
+    @RequestMapping(value= "/maps/{map}", method=RequestMethod.GET)
+	public Map getMapByMap(@PathVariable("map")String map) {
+		return mapService.getMapByMap(map);
 	}
 
    /* @RequestMapping(value="/maps/{map}", method=RequestMethod.GET)

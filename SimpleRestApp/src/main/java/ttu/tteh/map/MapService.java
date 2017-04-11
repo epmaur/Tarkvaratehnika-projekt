@@ -22,11 +22,11 @@ public class MapService {
 		return mapRepository.findAll();
 	}
   
-    public Map getMapByMapLink(String mapLink){
+    /*public Map getMapByMapLink(String mapLink){
 		return mapRepository.findByMapLink(mapLink);
-	} 
+	} */
    
-    List<Map> getMapByMap(String map){
+    public Map getMapByMap(String map){
         return mapRepository.findByMap(map);
     }
 }

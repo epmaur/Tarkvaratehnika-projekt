@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,15 +21,17 @@ public class Ad {
 	String content;
 	String track;
 	String color;
+	String file;
 	
 	
-	public Ad(String disc, String type, String content, String track, String color) {
+	public Ad(String disc, String type, String content, String track, String color, String file) {
 		super();
 		this.disc = disc;
 		this.type = type;
 		this.content = content;
 		this.track = track;
 		this.color = color;
+		this.file = file;
 	}
 
 
@@ -93,6 +97,10 @@ public class Ad {
 
 	public void setTrack(String track) {
 		this.track = track;
+	}
+	@JsonIgnore
+	public void setFile(String file){
+		this.file=file;
 	}
 	
 	

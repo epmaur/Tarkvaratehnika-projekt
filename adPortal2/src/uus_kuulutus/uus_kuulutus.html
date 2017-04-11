@@ -40,7 +40,11 @@
                                         ${track}
                                     </option>
                                 </select><br><p> </p>
-                                <input type="button" value="Tühista">
+
+                                <label for="upload-file-input">Upload your file:</label>
+                                <input files.bind="adData.file" id="upload-file-input" type="file" name="uploadfile" accept="*" />
+                                <input type="button" value="Redigeeri" click.delegate="choosePic()">
+                                <input type="button" value="Tühista" onclick="location.href='#/minu_kuulutused'" >
                                 <input type="submit" value="Lisa" onclick="location.href='#/minu_kuulutused'">
                                 
                               </fieldset>

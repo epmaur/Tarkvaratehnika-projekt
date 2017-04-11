@@ -2,6 +2,11 @@ import {HttpClient, json} from 'aurelia-fetch-client';
 
 
 export class rajakaardi_redigeerimine {
+    track;
+    activate(params, routeData) {
+        this.track = routeData.name;
+        console.log(routeData.name)
+    }
     attached() {
         this.init()
         this.addPic()
@@ -76,10 +81,9 @@ export class rajakaardi_redigeerimine {
         this.ctx.setTransform(1, 0, 0, 1, 0, 0);
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
     }
-    addPic() {
-        
+     addPic() {
 		let client = new HttpClient();
-		client.fetch('http://localhost:8080/maps/Alatskivi') 
+		client.fetch('http://localhost:8080/maps/' + this.track) 
 			.then(response => response.json())
 			.then(data => this.maps = data);
             

@@ -74,4 +74,9 @@ public class AdService {
 	List<Ad> getAdByType(String type) {
 		return adRepository.findByType(type);
 	}
+	public void setFileForAd(long id, String file){
+		Ad ad = adRepository.findOne(id);
+		ad.setFile(file);
+		adRepository.save(ad);
+	}
 }

@@ -10,6 +10,6 @@ public interface MapRepository extends CrudRepository<Map, Long>{
 	@Override
 	public List<Map> findAll();
 	public Map findByMapLink(String mapLink);
-	public List<Map> findByMap(String map);
+	public Map findByMap(String map);
 
 }
