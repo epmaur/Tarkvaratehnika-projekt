@@ -39,13 +39,15 @@
                                     <option repeat.for = "track of tracks" value.bind="track">
                                         ${track}
                                     </option>
-                                </select><br><p> </p>
-
-                                <label for="upload-file-input">Upload your file:</label>
-                                <input files.bind="adData.file" id="upload-file-input" type="file" name="uploadfile" accept="*" />
-                                <input type="button" value="Redigeeri" click.delegate="choosePic()">
-                                <input type="button" value="Tühista" onclick="location.href='#/minu_kuulutused'" >
-                                <input type="submit" value="Lisa" onclick="location.href='#/minu_kuulutused'">
+                                </select>
+                                  <input type="button" id="redigate" value="Redigeeri" click.delegate="choosePic()"/>
+                                  <br><p> </p>
+                                <label for="upload-file-input">Lisa kettast pilt:</label>
+                                <div class="upload">
+                                    <input files.bind="adData.file" id="upload-file-input" type="file" name="uploadfile" accept="*" />
+                                </div>
+                                <input id="cancel" type="button" value="Tühista" onclick="location.href='#/minu_kuulutused'" />
+                                <input id="add" type="submit" value="Lisa" onclick="location.href='#/minu_kuulutused'"/>
                                 
                               </fieldset>
                             </form>
