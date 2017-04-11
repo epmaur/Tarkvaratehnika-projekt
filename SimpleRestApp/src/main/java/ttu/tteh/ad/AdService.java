@@ -81,7 +81,7 @@ public class AdService {
 		adRepository.save(ad);
 	}
 	
-	public void setFileForAd(long id, String trackFile){
+	public void setTrackFileForAd(long id, String trackFile){
 		Ad ad = adRepository.findOne(id);
 		String newFilePath = ".." + trackFile.substring(56);
 		ad.setTrackFile(newFilePath);
