@@ -21,17 +21,18 @@
                     </div>
                     <div align="center">
                         <br /><br />
-                        <button click.delegate="clearArea()">Clear Area</button>
-                        Line width : <select value.bind="data.width">
+                        <button click.delegate="clearArea()">Alusta uuesti</button>
+                        Joone paksus : <select value.bind="data.width">
                             <option repeat.for ="width of widths" model.bind="width">
                                 ${width}
                         </option>
                         </select>
-                        Color : <select value.bind="data.color">
+                        Värv : <select value.bind="data.color">
                             <option repeat.for="color of colors" model.bind="color">
                                 ${color}
                         </option>
                         </select>
+                        <button onclick="location.href='#/minu_kuulutused'">Tühista</button>
                     </div>
                 </div>
             </div>
