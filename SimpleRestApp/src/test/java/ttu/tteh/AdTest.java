@@ -24,7 +24,7 @@ public class AdTest {
 	@Before
 	public void initObjects() {
 		adService = new AdService(adRepository);
-		ad = new Ad("Innova Destroyer", "leitud", "kaotasin ketta", "Elva discgolfirada", "Roheline");
+		ad = new Ad("Innova Destroyer", "leitud", "kaotasin ketta", "Elva discgolfirada", "Roheline", "file", "file");
 		adHelperCorrect = new AdHelper("Innova Destroyer", "Elva discgolfirada", "Roheline", "leitud");
 		adHelperCase = new AdHelper("inNOva Destroyer", "elVa discgOlfiRada", "rohELine", "LEITUD");
 		adHelperContains = new AdHelper("Innova", "Elva", "roheline", "leitud");

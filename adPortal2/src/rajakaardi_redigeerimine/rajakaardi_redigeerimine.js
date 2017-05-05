@@ -1,7 +1,12 @@
 import {HttpClient, json} from 'aurelia-fetch-client';
+import {inject} from 'aurelia-framework'
+import {Router} from 'aurelia-router'
 
-
+@inject(Router)
 export class rajakaardi_redigeerimine {
+    constructor(router){
+		this.router = router;
+	}
     track;
     activate(params, routeData) {
         this.track = routeData.name;
@@ -22,12 +27,23 @@ export class rajakaardi_redigeerimine {
     lastX;
     lastY;
     ctx;
+    myCanvas;
 
 
     init() {
-        var myCanvas = document.getElementById('myCanvas');
-        console.log(myCanvas);
+        this.myCanvas = document.getElementById('myCanvas');
         this.ctx = document.getElementById('myCanvas').getContext("2d");
+        var img = document.getElementById('image');
+        this.ctx.drawImage(img, 200, 200);
+        
+    }
+
+    save() {
+        var dataURL = this.myCanvas.toDataURL();
+		let uus_kuulutus = this.router.routes.find(x => x.name === 'uus_kuulutus');
+		uus_kuulutus.name = dataURL;
+		this.router.navigateToRoute('uus_kuulutus');
+        
     }
 
     canvasMouseDown(e, el) {

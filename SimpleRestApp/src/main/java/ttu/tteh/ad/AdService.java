@@ -76,14 +76,14 @@ public class AdService {
 	}
 	public void setFileForAd(long id, String file){
 		Ad ad = adRepository.findOne(id);
-		String newFilePath = ".." + file.substring(56);
+		String newFilePath = file.substring(55);
 		ad.setFile(newFilePath);
 		adRepository.save(ad);
 	}
 	
 	public void setTrackFileForAd(long id, String trackFile){
 		Ad ad = adRepository.findOne(id);
-		String newFilePath = ".." + trackFile.substring(56);
+		String newFilePath = ".." + trackFile.substring(55);
 		ad.setTrackFile(newFilePath);
 		adRepository.save(ad);
 	}

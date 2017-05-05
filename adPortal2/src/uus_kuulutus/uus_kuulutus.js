@@ -7,9 +7,17 @@ export class uus_kuulutus{
 	constructor(router){
 		this.router = router;
 	}
+    adData = {};
+    //dataURL;
+    activate(params, routeData) {
+        if (routeData.name != 'uus_kuulutus') {
+            this.adData.trackPictureURL = routeData.name;
+            routeData.name = "";
+            console.log(routeData.name);
+        }
+    }
     
-    adData = {}
-	tracks = ['Elva discgolfirada', 'Nõmme discgolfirada', 'Alatskivi'];
+	tracks = ['Alatskivi', 'Elva discgolfirada', 'Nõmme discgolfirada'];
     types = ['kaotatud', 'leitud'];
     selectedTrack= '';
 
