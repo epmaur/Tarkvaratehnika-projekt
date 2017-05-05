@@ -407,8 +407,7 @@ define('uus_kuulutus/uus_kuulutus',['exports', 'aurelia-fetch-client', 'aurelia-
 		uus_kuulutus.prototype.activate = function activate(params, routeData) {
 			if (routeData.name != 'uus_kuulutus') {
 				this.adData.trackPictureURL = routeData.name;
-				routeData.name = "";
-				console.log(routeData.name);
+				console.log(this.adData.trackPictureURL);
 			}
 		};
 

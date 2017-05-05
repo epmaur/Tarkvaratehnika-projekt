@@ -12,8 +12,7 @@ export class uus_kuulutus{
     activate(params, routeData) {
         if (routeData.name != 'uus_kuulutus') {
             this.adData.trackPictureURL = routeData.name;
-            routeData.name = "";
-            console.log(routeData.name);
+            console.log(this.adData.trackPictureURL);
         }
     }
     
