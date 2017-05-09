@@ -1,10 +1,8 @@
 package ttu.tteh.ad;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,19 +22,20 @@ public class Ad {
 	String content;
 	String track;
 	String color;
+	String addingDate;
 	
 	@JsonProperty
 	String trackFile;
 	
 	@JsonProperty
 	String file;
-	
+	/*
 	@Lob
-	@Column(name = "trackPictureURL", columnDefinition = "CLOB")
-	String trackPictureURL;
+	@Column(name = "trackPictureURL", columnDefinition = "BLOB")
+	String trackPictureURL;*/
 	
 	
-	public Ad(String disc, String type, String content, String track, String color, String file, String trackFile, String trackPictureURL) {
+	public Ad(String disc, String type, String content, String track, String color, String file, String trackFile) {
 		super();
 		this.disc = disc;
 		this.type = type;
@@ -45,7 +44,7 @@ public class Ad {
 		this.color = color;
 		this.file = file;
 		this.trackFile = trackFile;
-		this.trackPictureURL = trackPictureURL;
+		
 	}
 
 
@@ -112,6 +111,8 @@ public class Ad {
 	public void setTrack(String track) {
 		this.track = track;
 	}
+	
+	
 	/*
 	@Column(name = "trackPictureURL", length = 65536)
 	public String getTrackPictureURL() {
@@ -124,11 +125,24 @@ public class Ad {
 	}*/
 
 
+	
+
+
 	@JsonIgnore
 	public void setFile(String file){
 		this.file=file;
 	}
 	
+	public String getAddingDate() {
+		return addingDate;
+	}
+
+
+	public void setAddingDate(String addingDate) {
+		this.addingDate = addingDate;
+	}
+
+
 	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	public String getFile() {
 		return file;

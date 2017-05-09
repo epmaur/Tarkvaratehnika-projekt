@@ -7,8 +7,8 @@ export class Home {
         client.fetch('http://localhost:8080/ads/')
 			.then(response => response.json())
 			.then(ads => this.ads = ads);
-
-
+        
+        
 		};
     
 }

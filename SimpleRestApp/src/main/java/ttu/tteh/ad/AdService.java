@@ -1,5 +1,6 @@
 package ttu.tteh.ad;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,19 +17,20 @@ public class AdService {
 
 	Ad addAd(Ad ad) {
 		// here you can do some validations etc before saving the user
+		System.out.println(System.currentTimeMillis());
 		return adRepository.save(ad);
 	}
 	
 	List<Ad> filterAd (AdHelper adHelper){
-		return adRepository.findAll()
+		return ((Collection<Ad>) adRepository.findAllByOrderByAddingDateDesc())
 		.stream()
 		.filter(ad -> colorMatch(ad, adHelper))
 		.filter(ad -> discMatch(ad, adHelper))
 		.filter(ad -> trackMatch(ad, adHelper))
 		.filter(ad -> typeMatch(ad, adHelper))
 		.collect(Collectors.toList());
-		
 	}
+	
 	public boolean colorMatch(Ad ad, AdHelper adHelper){
 		if (adHelper.getColor() == null || adHelper.getColor().equals("")){
 			return true;
@@ -64,7 +66,7 @@ public class AdService {
 	}
 
 	List<Ad> getAllAds() {
-		return adRepository.findAll();
+		return adRepository.findAllByOrderByAddingDateDesc();
 	}
 /*
 	Ad getAdById(long adId) {
@@ -72,7 +74,7 @@ public class AdService {
 	}*/
 	
 	List<Ad> getAdByType(String type) {
-		return adRepository.findByType(type);
+		return adRepository.findByTypeOrderByAddingDateDesc(type);
 	}
 	public void setFileForAd(long id, String file){
 		Ad ad = adRepository.findOne(id);
