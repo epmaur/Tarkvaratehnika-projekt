@@ -29,6 +29,7 @@
                                 <h6 style="text-align:left">Tüüp: ${ad.type}</h6>
                                 <h6 style="text-align:left">Lisatud: ${ad.addingDate}</h6>
                             </div>
+                            <button if.bind=ad.trackPictureURL id="vaata_rajakaarti" click.delegate="lookAtMap(ad.track, ad.trackPictureURL)">Vaata rajakaarti</button>
                         </div>
                     </div>
                 </div>

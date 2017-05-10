@@ -76,6 +76,52 @@ define('main',['exports', './environment'], function (exports, _environment) {
     });
   }
 });
+define('home/index',['exports', 'aurelia-fetch-client', 'aurelia-framework', 'aurelia-router'], function (exports, _aureliaFetchClient, _aureliaFramework, _aureliaRouter) {
+    'use strict';
+
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    exports.Home = undefined;
+
+    function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+        }
+    }
+
+    var _dec, _class;
+
+    var Home = exports.Home = (_dec = (0, _aureliaFramework.inject)(_aureliaRouter.Router), _dec(_class = function () {
+        function Home(router) {
+            _classCallCheck(this, Home);
+
+            this.router = router;
+        }
+
+        Home.prototype.activate = function activate() {
+            var _this = this;
+
+            this.ads = [];
+            var client = new _aureliaFetchClient.HttpClient();
+            client.fetch('http://localhost:8080/ads/').then(function (response) {
+                return response.json();
+            }).then(function (ads) {
+                return _this.ads = ads;
+            });
+        };
+
+        Home.prototype.lookAtMap = function lookAtMap(trackName, trackPictureURL) {
+            var vaata_rajakaarti = this.router.routes.find(function (x) {
+                return x.name === 'vaata_rajakaarti';
+            });
+            vaata_rajakaarti.name = trackName + '%NING%' + trackPictureURL + '%NING2%' + "home";
+            this.router.navigateToRoute('vaata_rajakaarti');
+        };
+
+        return Home;
+    }()) || _class);
+});
 define('kaotatud_kettad/kaotatud_kettad',['exports', 'aurelia-fetch-client', 'aurelia-framework', 'aurelia-router'], function (exports, _aureliaFetchClient, _aureliaFramework, _aureliaRouter) {
     'use strict';
 
@@ -132,11 +178,75 @@ define('kaotatud_kettad/kaotatud_kettad',['exports', 'aurelia-fetch-client', 'au
             var vaata_rajakaarti = this.router.routes.find(function (x) {
                 return x.name === 'vaata_rajakaarti';
             });
-            vaata_rajakaarti.name = trackName + '%NING%' + trackPictureURL;
+            vaata_rajakaarti.name = trackName + '%NING%' + trackPictureURL + '%NING2%' + "kaotatud_kettad";
             this.router.navigateToRoute('vaata_rajakaarti');
         };
 
         return kaotatud_kettad;
+    }()) || _class);
+});
+define('leitud_kettad/leitud_kettad',['exports', 'aurelia-fetch-client', 'aurelia-framework', 'aurelia-router'], function (exports, _aureliaFetchClient, _aureliaFramework, _aureliaRouter) {
+    'use strict';
+
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    exports.leitud_kettad = undefined;
+
+    function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+        }
+    }
+
+    var _dec, _class;
+
+    var leitud_kettad = exports.leitud_kettad = (_dec = (0, _aureliaFramework.inject)(_aureliaRouter.Router), _dec(_class = function () {
+        function leitud_kettad(router) {
+            _classCallCheck(this, leitud_kettad);
+
+            this.filterData = {};
+            this.ads = [];
+            this.types = ['leitud', 'kaotatud'];
+
+            this.router = router;
+        }
+
+        leitud_kettad.prototype.activate = function activate() {
+            var _this = this;
+
+            var client = new _aureliaFetchClient.HttpClient();
+            client.fetch('http://localhost:8080/ads/leitud').then(function (response) {
+                return response.json();
+            }).then(function (ads) {
+                return _this.ads = ads;
+            });
+        };
+
+        leitud_kettad.prototype.filterAds = function filterAds() {
+            var _this2 = this;
+
+            var client = new _aureliaFetchClient.HttpClient();
+            client.fetch('http://localhost:8080/ads/params', {
+                'method': "POST",
+                'body': (0, _aureliaFetchClient.json)(this.filterData)
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                return _this2.ads = data;
+            });
+            console.log("Ads filtered!");
+        };
+
+        leitud_kettad.prototype.lookAtMap = function lookAtMap(trackName, trackPictureURL) {
+            var vaata_rajakaarti = this.router.routes.find(function (x) {
+                return x.name === 'vaata_rajakaarti';
+            });
+            vaata_rajakaarti.name = trackName + '%NING%' + trackPictureURL + '%NING2%' + "leitud_kettad";
+            this.router.navigateToRoute('vaata_rajakaarti');
+        };
+
+        return leitud_kettad;
     }()) || _class);
 });
 define('minu_kuulutused/minu_kuulutused',['exports', 'aurelia-fetch-client'], function (exports, _aureliaFetchClient) {
@@ -171,58 +281,6 @@ define('minu_kuulutused/minu_kuulutused',['exports', 'aurelia-fetch-client'], fu
         };
 
         return minu_kuulutused;
-    }();
-});
-define('leitud_kettad/leitud_kettad',['exports', 'aurelia-fetch-client'], function (exports, _aureliaFetchClient) {
-    'use strict';
-
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
-    exports.leitud_kettad = undefined;
-
-    function _classCallCheck(instance, Constructor) {
-        if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
-        }
-    }
-
-    var leitud_kettad = exports.leitud_kettad = function () {
-        function leitud_kettad() {
-            _classCallCheck(this, leitud_kettad);
-
-            this.filterData = {};
-            this.ads = [];
-            this.types = ['leitud', 'kaotatud'];
-        }
-
-        leitud_kettad.prototype.activate = function activate() {
-            var _this = this;
-
-            var client = new _aureliaFetchClient.HttpClient();
-            client.fetch('http://localhost:8080/ads/leitud').then(function (response) {
-                return response.json();
-            }).then(function (ads) {
-                return _this.ads = ads;
-            });
-        };
-
-        leitud_kettad.prototype.filterAds = function filterAds() {
-            var _this2 = this;
-
-            var client = new _aureliaFetchClient.HttpClient();
-            client.fetch('http://localhost:8080/ads/params', {
-                'method': "POST",
-                'body': (0, _aureliaFetchClient.json)(this.filterData)
-            }).then(function (response) {
-                return response.json();
-            }).then(function (data) {
-                return _this2.ads = data;
-            });
-            console.log("Ads filtered!");
-        };
-
-        return leitud_kettad;
     }();
 });
 define('rajakaardi_redigeerimine/rajakaardi_redigeerimine',['exports', 'aurelia-fetch-client', 'aurelia-framework', 'aurelia-router'], function (exports, _aureliaFetchClient, _aureliaFramework, _aureliaRouter) {
@@ -376,6 +434,7 @@ define('uus_kuulutus/uus_kuulutus',['exports', 'aurelia-fetch-client', 'aurelia-
 
 			this.adData = {};
 			this.tracks = ['Alatskivi', 'Elva discgolfirada', 'Nõmme discgolfirada'];
+			this.tracksWithMaps = ['Alatskivi'];
 			this.types = ['kaotatud', 'leitud'];
 			this.selectedTrack = '';
 
@@ -434,40 +493,6 @@ define('uus_kuulutus/uus_kuulutus',['exports', 'aurelia-fetch-client', 'aurelia-
 		return uus_kuulutus;
 	}()) || _class);
 });
-define('home/index',['exports', 'aurelia-fetch-client'], function (exports, _aureliaFetchClient) {
-    'use strict';
-
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
-    exports.Home = undefined;
-
-    function _classCallCheck(instance, Constructor) {
-        if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
-        }
-    }
-
-    var Home = exports.Home = function () {
-        function Home() {
-            _classCallCheck(this, Home);
-        }
-
-        Home.prototype.activate = function activate() {
-            var _this = this;
-
-            this.ads = [];
-            var client = new _aureliaFetchClient.HttpClient();
-            client.fetch('http://localhost:8080/ads/').then(function (response) {
-                return response.json();
-            }).then(function (ads) {
-                return _this.ads = ads;
-            });
-        };
-
-        return Home;
-    }();
-});
 define('vaata_rajakaarti/vaata_rajakaarti',['exports', 'aurelia-fetch-client', 'aurelia-framework', 'aurelia-router'], function (exports, _aureliaFetchClient, _aureliaFramework, _aureliaRouter) {
     'use strict';
 
@@ -492,11 +517,14 @@ define('vaata_rajakaarti/vaata_rajakaarti',['exports', 'aurelia-fetch-client', '
         }
 
         vaata_rajakaarti.prototype.activate = function activate(params, routeData) {
-            var indexOfSeparator = routeData.name.indexOf("%NING%");
-            this.track = routeData.name.substring(0, indexOfSeparator);
-            this.trackPictureURL = routeData.name.substring(indexOfSeparator + 6);
+            var indexOfSeparator1 = routeData.name.indexOf("%NING%");
+            var indexOfSeparator2 = routeData.name.indexOf("%NING2%");
+            this.track = routeData.name.substring(0, indexOfSeparator1);
+            this.trackPictureURL = routeData.name.substring(indexOfSeparator1 + 6, indexOfSeparator2);
+            this.previousView = routeData.name.substring(indexOfSeparator2 + 7);
             console.log(this.track);
             console.log(this.trackPictureURL);
+            console.log(this.previousView);
         };
 
         vaata_rajakaarti.prototype.attached = function attached() {
@@ -516,15 +544,19 @@ define('vaata_rajakaarti/vaata_rajakaarti',['exports', 'aurelia-fetch-client', '
             console.log(this.maps);
         };
 
+        vaata_rajakaarti.prototype.goToPreviousView = function goToPreviousView() {
+            this.router.navigateToRoute(this.previousView);
+        };
+
         return vaata_rajakaarti;
     }()) || _class);
 });
 define('text!app.html', ['module'], function(module) { module.exports = "<template>\r\n<router-view></router-view>\r\n</template>\r\n"; });
-define('text!home/index.html', ['module'], function(module) { module.exports = "<template>\r\n\t<div class=\"container pad\">\r\n            <header>\r\n                <img src=\"../pildid/header.jpg\" class=\"img-responsive\">\r\n            </header>\r\n            <nav>\r\n                <ul class=\"nav nav-justified\">\r\n                    <li><a class=\"active\" href=\"index.html\">Avaleht</a></li>\r\n                    <li><a href=\"#/leitud_kettad\">Leitud kettad</a></li>\r\n                    <li><a href=\"#/kaotatud_kettad\">Kaotatud kettad</a></li>\r\n                    <li><a href=\"#/minu_kuulutused\">Minu kuulutused</a></li>\r\n                </ul>\r\n            </nav>\r\n            <div class=\"row\">\r\n                <div class=\"col-md-12\">\r\n                    <h3>Viimati lisatud kuulutused</h3>\r\n                    <div repeat.for=\"ad of ads\">\r\n                        <div class=\"col-sm-12\">\r\n                            <h4>${ad.disc}</h4>\r\n                            <hr>\r\n                            <div class=\"col-sm-3\">\r\n                                <img src=${ad.file} style=\"width:100px;\">\r\n                            </div>\r\n                            <div class=\"col-sm-9\">\r\n                                <h5 style=\"text-align:left\">${ad.content}</h5>\r\n                                <br>\r\n                                <h6 style=\"text-align:left\">Koht: ${ad.track}</h6>\r\n                                <h6 style=\"text-align:left\">Värv: ${ad.color}</h6>\r\n                                <h6 style=\"text-align:left\">Tüüp: ${ad.type}</h6>\r\n                                <h6 style=\"text-align:left\">Lisatud: ${ad.addingDate}</h6>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div id=\"footer\"></div>\r\n        </div>\r\n        \r\n</template>"; });
-define('text!kaotatud_kettad/kaotatud_kettad.html', ['module'], function(module) { module.exports = "<template>\r\n        <div class=\"container pad\">\r\n            <header>\r\n                <img src=\"../pildid/header.jpg\" class=\"img-responsive\">\r\n            </header>\r\n            <nav>\r\n                <ul class=\"nav nav-justified\">\r\n                    <li><a href=\"index.html\">Avaleht</a></li>\r\n                    <li><a href=\"#/leitud_kettad\">Leitud kettad</a></li>\r\n                    <li><a class=\"active\" href=\"kaotatud_kettad\">Kaotatud kettad</a></li>\r\n                    <li><a href=\"#/minu_kuulutused\">Minu kuulutused</a></li>\r\n                </ul>\r\n            </nav>\r\n            <div class=\"row\">\r\n                <div class=\"col-md-8\">\r\n                    <h3>Kaotatud Kettad</h3>\r\n                    <div repeat.for=\"ad of ads\">\r\n                        <div class=\"col-sm-12\">\r\n                            <h4>${ad.disc}</h4>\r\n                            <hr>\r\n                            <div class=\"col-sm-3\">\r\n                                <img src=${ad.file} style=\"width:100px;\">\r\n                            </div>\r\n                            <div class=\"col-sm-9\">\r\n                                <h5 style=\"text-align:left\">${ad.content}</h5>\r\n                                <br>\r\n                                <h6 style=\"text-align:left\">Koht: ${ad.track}</h6>\r\n                                <h6 style=\"text-align:left\">Värv: ${ad.color}</h6>\r\n                                <h6 style=\"text-align:left\">Lisatud: ${ad.addingDate}</h6>\r\n                            </div>\r\n                            <button click.delegate=\"lookAtMap(ad.track, ad.trackPictureURL)\">Vaata rajakaarti</button>\r\n                        </div> \r\n                    </div>\r\n                </div>\r\n                <div class=\"col-md-4\">\r\n                     <form class=\"search\" submit.delegate= \"filterAds()\">\r\n                    <h3 style=\"color:white\">Otsing</h3>\r\n                    <select name=\"type\" style=\"width:100%\" value.bind = \"filterData.type\">\r\n                        <option repeat.for = \"type of types\" value.bind=\"type\">\r\n                            ${type}\r\n                        </option>\r\n                    </select><br>\r\n                    <br>\r\n                    <input type=\"text\" placeholder=\"Rada\" value.bind = \"filterData.track\">\r\n                    <input type=\"text\" placeholder=\"Ketas\" value.bind = \"filterData.disc\">\r\n                    <input type=\"text\" placeholder=\"Värv\" value.bind = \"filterData.color\">\r\n                    <input type=\"submit\" value = \"Otsi\">\r\n                </form>\r\n                </div>     \r\n            </div>\r\n            <div id=\"footer\"></div>\r\n        </div>\r\n        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\r\n</template>\r\n"; });
-define('text!leitud_kettad/leitud_kettad.html', ['module'], function(module) { module.exports = "<template>\r\n    <div class=\"container pad\">\r\n        <header>\r\n            <img src=\"../pildid/header.jpg\" class=\"img-responsive\">\r\n        </header>\r\n        <nav>\r\n            <ul class=\"nav nav-justified\">\r\n                <li><a href=\"index.html\">Avaleht</a></li>\r\n                <li><a class=\"active\" href=\"leitud_kettad\">Leitud kettad</a></li>\r\n                <li><a href=\"#/kaotatud_kettad\">Kaotatud kettad</a></li>\r\n                <li><a href=\"#/minu_kuulutused\">Minu kuulutused</a></li>\r\n            </ul>\r\n        </nav>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-8\">\r\n                <h3>Leitud Kettad</h3>\r\n                <div class=\"col-md-1*\">\r\n                </div>\r\n                <div repeat.for=\"ad of ads\">\r\n                    <div class=\"col-sm-12\">\r\n                        <h4>${ad.disc}</h4>\r\n                        <hr>\r\n                        <div class=\"col-sm-3\">\r\n                            <img src=${ad.file} style=\"width:100px;\">\r\n                        </div>\r\n                        <div class=\"col-sm-9\">\r\n                            <h5 style=\"text-align:left\">${ad.content}</h5>\r\n                            <br>\r\n                            <h6 style=\"text-align:left\">Koht: ${ad.track}</h6>\r\n                            <h6 style=\"text-align:left\">Värv: ${ad.color}</h6>\r\n                            <h6 style=\"text-align:left\">Lisatud: ${ad.addingDate}</h6>\r\n                        </div>\r\n                    </div> \r\n                </div>\r\n                <div class=\"col-md-1*\">\r\n                </div>\r\n             <!---   <hr>\r\n                <div class=\"col-md-1*\">\r\n                </div>\r\n                <div class=\"col-md-6*\">\r\n                    <img src=\"../pildid/ketas.jpg\" class=\"pilt\">\r\n                    <h4>Leitud punane Dominator. Asukoht Keila. Võta ühendust, kui tead täpset ketta kaotuskohta ja andmeid. Tel. 5171553</h4>\r\n                </div>\r\n                <div class=\"col-md-1*\">\r\n                </div>-->\r\n            </div>\r\n            <div class=\"col-md-4\">\r\n                 <form class=\"search\" submit.delegate= \"filterAds()\">\r\n                    <h3 style=\"color:white\">Otsing</h3>\r\n                    <select name=\"type\" style=\"width:100%\" value.bind = \"filterData.type\">\r\n                        <option repeat.for = \"type of types\" value.bind=\"type\">\r\n                            ${type}\r\n                        </option>\r\n                    </select><br>\r\n                    <br>\r\n                    <input type=\"text\" placeholder=\"Rada\" value.bind = \"filterData.track\">\r\n                    <input type=\"text\" placeholder=\"Ketas\" value.bind = \"filterData.disc\">\r\n                    <input type=\"text\" placeholder=\"Värv\" value.bind = \"filterData.color\">\r\n                    <input type=\"submit\" value = \"Otsi\">\r\n                </form>\r\n            </div>\r\n\r\n\r\n\r\n        </div>\r\n        <div id=\"footer\"></div>\r\n    </div>\r\n    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\r\n    <script>${showUsers()}</script>\r\n</template>\r\n"; });
+define('text!home/index.html', ['module'], function(module) { module.exports = "<template>\r\n\t<div class=\"container pad\">\r\n            <header>\r\n                <img src=\"../pildid/header.jpg\" class=\"img-responsive\">\r\n            </header>\r\n            <nav>\r\n                <ul class=\"nav nav-justified\">\r\n                    <li><a class=\"active\" href=\"index.html\">Avaleht</a></li>\r\n                    <li><a href=\"#/leitud_kettad\">Leitud kettad</a></li>\r\n                    <li><a href=\"#/kaotatud_kettad\">Kaotatud kettad</a></li>\r\n                    <li><a href=\"#/minu_kuulutused\">Minu kuulutused</a></li>\r\n                </ul>\r\n            </nav>\r\n            <div class=\"row\">\r\n                <div class=\"col-md-12\">\r\n                    <h3>Viimati lisatud kuulutused</h3>\r\n                    <div repeat.for=\"ad of ads\">\r\n                        <div class=\"col-sm-12\">\r\n                            <h4>${ad.disc}</h4>\r\n                            <hr>\r\n                            <div class=\"col-sm-3\">\r\n                                <img src=${ad.file} style=\"width:100px;\">\r\n                            </div>\r\n                            <div class=\"col-sm-9\">\r\n                                <h5 style=\"text-align:left\">${ad.content}</h5>\r\n                                <br>\r\n                                <h6 style=\"text-align:left\">Koht: ${ad.track}</h6>\r\n                                <h6 style=\"text-align:left\">Värv: ${ad.color}</h6>\r\n                                <h6 style=\"text-align:left\">Tüüp: ${ad.type}</h6>\r\n                                <h6 style=\"text-align:left\">Lisatud: ${ad.addingDate}</h6>\r\n                            </div>\r\n                            <button if.bind=ad.trackPictureURL id=\"vaata_rajakaarti\" click.delegate=\"lookAtMap(ad.track, ad.trackPictureURL)\">Vaata rajakaarti</button>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div id=\"footer\"></div>\r\n        </div>\r\n        \r\n</template>"; });
+define('text!kaotatud_kettad/kaotatud_kettad.html', ['module'], function(module) { module.exports = "<template>\r\n        <div class=\"container pad\">\r\n            <header>\r\n                <img src=\"../pildid/header.jpg\" class=\"img-responsive\">\r\n            </header>\r\n            <nav>\r\n                <ul class=\"nav nav-justified\">\r\n                    <li><a href=\"index.html\">Avaleht</a></li>\r\n                    <li><a href=\"#/leitud_kettad\">Leitud kettad</a></li>\r\n                    <li><a class=\"active\" href=\"kaotatud_kettad\">Kaotatud kettad</a></li>\r\n                    <li><a href=\"#/minu_kuulutused\">Minu kuulutused</a></li>\r\n                </ul>\r\n            </nav>\r\n            <div class=\"row\">\r\n                <div class=\"col-md-8\">\r\n                    <h3>Kaotatud Kettad</h3>\r\n                    <div repeat.for=\"ad of ads\">\r\n                        <div class=\"col-sm-12\">\r\n                            <h4>${ad.disc}</h4>\r\n                            <hr>\r\n                            <div class=\"col-sm-3\">\r\n                                <img src=${ad.file} style=\"width:100px;\">\r\n                            </div>\r\n                            <div class=\"col-sm-9\">\r\n                                <h5 style=\"text-align:left\">${ad.content}</h5>\r\n                                <br>\r\n                                <h6 style=\"text-align:left\">Koht: ${ad.track}</h6>\r\n                                <h6 style=\"text-align:left\">Värv: ${ad.color}</h6>\r\n                                <h6 style=\"text-align:left\">Lisatud: ${ad.addingDate}</h6>\r\n                            </div>\r\n                            <button if.bind=ad.trackPictureURL id=\"vaata_rajakaarti\" click.delegate=\"lookAtMap(ad.track, ad.trackPictureURL)\">Vaata rajakaarti</button>\r\n                        </div> \r\n                    </div>\r\n                </div>\r\n                <div class=\"col-md-4\">\r\n                     <form class=\"search\" submit.delegate= \"filterAds()\">\r\n                    <h3 style=\"color:white\">Otsing</h3>\r\n                    <select name=\"type\" style=\"width:100%\" value.bind = \"filterData.type\">\r\n                        <option repeat.for = \"type of types\" value.bind=\"type\">\r\n                            ${type}\r\n                        </option>\r\n                    </select><br>\r\n                    <br>\r\n                    <input type=\"text\" placeholder=\"Rada\" value.bind = \"filterData.track\">\r\n                    <input type=\"text\" placeholder=\"Ketas\" value.bind = \"filterData.disc\">\r\n                    <input type=\"text\" placeholder=\"Värv\" value.bind = \"filterData.color\">\r\n                    <input type=\"submit\" value = \"Otsi\">\r\n                </form>\r\n                </div>     \r\n            </div>\r\n            <div id=\"footer\"></div>\r\n        </div>\r\n        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\r\n</template>\r\n"; });
+define('text!leitud_kettad/leitud_kettad.html', ['module'], function(module) { module.exports = "<template>\r\n    <div class=\"container pad\">\r\n        <header>\r\n            <img src=\"../pildid/header.jpg\" class=\"img-responsive\">\r\n        </header>\r\n        <nav>\r\n            <ul class=\"nav nav-justified\">\r\n                <li><a href=\"index.html\">Avaleht</a></li>\r\n                <li><a class=\"active\" href=\"leitud_kettad\">Leitud kettad</a></li>\r\n                <li><a href=\"#/kaotatud_kettad\">Kaotatud kettad</a></li>\r\n                <li><a href=\"#/minu_kuulutused\">Minu kuulutused</a></li>\r\n            </ul>\r\n        </nav>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-8\">\r\n                <h3>Leitud Kettad</h3>\r\n                <div class=\"col-md-1*\">\r\n                </div>\r\n                <div repeat.for=\"ad of ads\">\r\n                    <div class=\"col-sm-12\">\r\n                        <h4>${ad.disc}</h4>\r\n                        <hr>\r\n                        <div class=\"col-sm-3\">\r\n                            <img src=${ad.file} style=\"width:100px;\">\r\n                        </div>\r\n                        <div class=\"col-sm-9\">\r\n                            <h5 style=\"text-align:left\">${ad.content}</h5>\r\n                            <br>\r\n                            <h6 style=\"text-align:left\">Koht: ${ad.track}</h6>\r\n                            <h6 style=\"text-align:left\">Värv: ${ad.color}</h6>\r\n                            <h6 style=\"text-align:left\">Lisatud: ${ad.addingDate}</h6>\r\n                        </div>\r\n                        <button if.bind=ad.trackPictureURL id=\"vaata_rajakaarti\" click.delegate=\"lookAtMap(ad.track, ad.trackPictureURL)\">Vaata rajakaarti</button>\r\n                    </div> \r\n                </div>\r\n                <div class=\"col-md-1*\">\r\n                </div>\r\n             <!---   <hr>\r\n                <div class=\"col-md-1*\">\r\n                </div>\r\n                <div class=\"col-md-6*\">\r\n                    <img src=\"../pildid/ketas.jpg\" class=\"pilt\">\r\n                    <h4>Leitud punane Dominator. Asukoht Keila. Võta ühendust, kui tead täpset ketta kaotuskohta ja andmeid. Tel. 5171553</h4>\r\n                </div>\r\n                <div class=\"col-md-1*\">\r\n                </div>-->\r\n            </div>\r\n            <div class=\"col-md-4\">\r\n                 <form class=\"search\" submit.delegate= \"filterAds()\">\r\n                    <h3 style=\"color:white\">Otsing</h3>\r\n                    <select name=\"type\" style=\"width:100%\" value.bind = \"filterData.type\">\r\n                        <option repeat.for = \"type of types\" value.bind=\"type\">\r\n                            ${type}\r\n                        </option>\r\n                    </select><br>\r\n                    <br>\r\n                    <input type=\"text\" placeholder=\"Rada\" value.bind = \"filterData.track\">\r\n                    <input type=\"text\" placeholder=\"Ketas\" value.bind = \"filterData.disc\">\r\n                    <input type=\"text\" placeholder=\"Värv\" value.bind = \"filterData.color\">\r\n                    <input type=\"submit\" value = \"Otsi\">\r\n                </form>\r\n            </div>\r\n\r\n\r\n\r\n        </div>\r\n        <div id=\"footer\"></div>\r\n    </div>\r\n    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\r\n    <script>${showUsers()}</script>\r\n</template>\r\n"; });
 define('text!minu_kuulutused/minu_kuulutused.html', ['module'], function(module) { module.exports = "<template>\r\n    <div class=\"container pad\">\r\n            <header>\r\n                <img src=\"../pildid/header.jpg\" class=\"img-responsive\">\r\n            </header>\r\n            <nav>\r\n                <ul class=\"nav nav-justified\">\r\n                    <li><a href=\"index.html\">Avaleht</a></li>\r\n                    <li><a href=\"#/leitud_kettad\">Leitud kettad</a></li>\r\n                    <li><a href=\"#/kaotatud_kettad\">Kaotatud kettad</a></li>\r\n                    <li><a class=\"active\" href=\"#/minu_kuulutused\">Minu kuulutused</a></li>\r\n                </ul>\r\n            </nav>\r\n            <div class=\"row\">\r\n                <div class=\"col-md-12\">\r\n                    <h3>Minu kuulutused</h3>\r\n                    <a href=\"#/uus_kuulutus\" class=\"uus_kuulutus\">Lisa uus kuulutus</a>\r\n                    <div class=\"row\">\r\n                        <div repeat.for=\"ad of ads\">\r\n                            <div class=\"col-sm-12\">\r\n                                <h4>${ad.disc}</h4>\r\n                                <hr>\r\n                                <div class=\"col-sm-3\">\r\n                                    <img src=${ad.file} style=\"width:100px;\">\r\n                                </div>\r\n                                <div class=\"col-sm-9\">\r\n                                    <h5 style=\"text-align:left\">${ad.content}</h5>\r\n                                    <br>\r\n                                    <h6 style=\"text-align:left\">Koht: ${ad.track}</h6>\r\n                                    <h6 style=\"text-align:left\">Värv: ${ad.color}</h6>\r\n                                    <h6 style=\"text-align:left\">Tüüp: ${ad.type}</h6>\r\n                                    <h6 style=\"text-align:left\">Lisatud: ${ad.addingDate}</h6>\r\n                                </div>\r\n                            </div>\r\n                        <div class=\"col-md-1*\">\r\n                            <a>Eemalda</a>\r\n                            <a>Muuda</a>\r\n                        </div>\r\n                        </div>\r\n                    </div>  \r\n                </div>\r\n            </div>\r\n            <div id=\"footer\"></div>\r\n        </div>\r\n        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\r\n</template>"; });
 define('text!rajakaardi_redigeerimine/rajakaardi_redigeerimine.html', ['module'], function(module) { module.exports = "<template>\r\n    <div class=\"container pad\">\r\n            <header>\r\n                <img src=\"../pildid/header.jpg\" class=\"img-responsive\">\r\n            </header>\r\n            <nav>\r\n                <ul class=\"nav nav-justified\">\r\n                    <li><a href=\"index.html\">Avaleht</a></li>\r\n                    <li><a href=\"#/leitud_kettad\">Leitud kettad</a></li>\r\n                    <li><a href=\"#/kaotatud_kettad\">Kaotatud kettad</a></li>\r\n                    <li><a href=\"#/minu_kuulutused\">Minu kuulutused</a></li>\r\n                </ul>\r\n            </nav>\r\n            <div class=\"row\">\r\n                <div class=\"col-md-12\">\r\n                    <h3>Raja redigeerimine</h3>\r\n                    <div id=\"container\">\r\n                        <img id='image' src=${maps.mapLink} alt=\"\" width=\"1000\" height=\"550\" />\r\n                        <canvas id=\"myCanvas\" width=\"1000\" height=\"650\" mousedown.delegate=\"canvasMouseDown($event, $this)\" mouseleave.delegate=canvasMouseLeave($event)\r\n                                mouseup.delegate=canvasMouseUp($event) mousemove.delegate=\"canvasMouseMove($event, $this)\"></canvas>\r\n                    </div>\r\n                    <div align=\"center\">\r\n                        <br /><br />\r\n                        <button click.delegate=\"clearArea()\">Alusta uuesti</button>\r\n                        Joone paksus : <select value.bind=\"data.width\">\r\n                            <option repeat.for =\"width of widths\" model.bind=\"width\">\r\n                                ${width}\r\n                        </option>\r\n                        </select>\r\n                        Värv : <select value.bind=\"data.color\">\r\n                            <option repeat.for=\"color of colors\" model.bind=\"color\">\r\n                                ${color}\r\n                        </option>\r\n                        </select>\r\n                        <button click.delegate=\"save()\">Salvesta</button>\r\n                        <button onclick=\"location.href='#/minu_kuulutused'\">Tühista</button>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div id=\"footer\"></div>\r\n        </div>\r\n</template>"; });
 define('text!uus_kuulutus/uus_kuulutus.html', ['module'], function(module) { module.exports = "<template>\r\n    <div class=\"container pad\">\r\n            <header>\r\n                <img src=\"../pildid/header.jpg\" class=\"img-responsive\">\r\n            </header>\r\n            <nav>\r\n                <ul class=\"nav nav-justified\">\r\n                    <li><a href=\"index.html\">Avaleht</a></li>\r\n                    <li><a href=\"#/leitud_kettad\">Leitud kettad</a></li>\r\n                    <li><a href=\"#/kaotatud_kettad\">Kaotatud kettad</a></li>\r\n                    <li><a class=\"active\" href=\"#/minu_kuulutused\">Minu kuulutused</a></li>\r\n                </ul>\r\n            </nav>\r\n            <div class=\"row\">\r\n                <div class=\"col-md-12\"> \r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                        <div class=\"col-md-1*\">\r\n                        </div>\r\n                        <!--<div class=\"col-md-10\">-->\r\n                            <form id=\"userform\" submit.delegate =\"addAd()\" action=\"#/minu_kuulutused\">\r\n                              <fieldset>\r\n                                <legend>Lisa uus kuulutus:</legend><br>\r\n                                  Ketas:<br>\r\n                                <input type=\"text\" name=\"disc\" value.bind = \"adData.disc\"><br>\r\n                                  Värv:<br>\r\n                                <input type=\"text\" name=\"color\" value.bind = \"adData.color\"><br>\r\n                                  Tüüp:<br>\r\n                                  <select name=\"type\" value.bind = \"adData.type\">\r\n                                      <option repeat.for = \"type of types\" value.bind=\"type\">\r\n                                        ${type}\r\n                                      </option>\r\n                                  </select><br>\r\n                                  Sisu:<br>\r\n                                <textarea name=\"content\" value.bind = \"adData.content\"></textarea><br>\r\n                                  Seotud rada: <br>\r\n                                <select value.bind = \"adData.track\">\r\n                                    <option repeat.for = \"track of tracks\" value.bind=\"track\">\r\n                                        ${track}\r\n                                    </option>\r\n                                </select>\r\n                                  <input type=\"button\" id=\"redigate\" value=\"Redigeeri\" click.delegate=\"choosePic()\"/>\r\n                                  <br><p> </p>\r\n                                <label for=\"upload-file-input\">Lisa kettast pilt:</label>\r\n                                <div class=\"upload\">\r\n                                    <input files.bind=\"adData.file\" id=\"upload-file-input\" type=\"file\" name=\"uploadfile\" accept=\"*\" />\r\n                                </div>\r\n                                <input id=\"cancel\" type=\"button\" value=\"Tühista\" onclick=\"location.href='#/minu_kuulutused'\" />\r\n                                <input id=\"add\" type=\"submit\" value=\"Lisa\" onclick=\"location.href='#/minu_kuulutused'\"/>\r\n                                \r\n                              </fieldset>\r\n                            </form>\r\n                        <!--</div>-->\r\n                        <div class=\"col-md-1*\">\r\n                        </div>\r\n                    </div>\r\n            <div id=\"footer\"></div>\r\n        </div>\r\n        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\r\n</template>\r\n"; });
-define('text!vaata_rajakaarti/vaata_rajakaarti.html', ['module'], function(module) { module.exports = "<template>\r\n    <div class=\"container pad\">\r\n            <header>\r\n                <img src=\"../pildid/header.jpg\" class=\"img-responsive\">\r\n            </header>\r\n            <nav>\r\n                <ul class=\"nav nav-justified\">\r\n                    <li><a href=\"index.html\">Avaleht</a></li>\r\n                    <li><a href=\"#/leitud_kettad\">Leitud kettad</a></li>\r\n                    <li><a href=\"#/kaotatud_kettad\">Kaotatud kettad</a></li>\r\n                    <li><a href=\"#/minu_kuulutused\">Minu kuulutused</a></li>\r\n                </ul>\r\n            </nav>\r\n            <div class=\"row\">\r\n                <div class=\"col-md-12\">\r\n                    <h3>Täpsem rajakaardi piirkond</h3>\r\n                    <div id=\"container2\">\r\n                         <div class=\"picturesOnTop\">\r\n                            <img src=${maps.mapLink} style=\"width:904px;height:556px\" style=\"position:absolute top: 0px; left: 50px\"/>\r\n                        </div>\r\n                        <div class=\"picturesOnTop\">\r\n                            <img src=${trackPictureURL} style=\"width:904px;height:556px\"\"position: absolute; top: 0px; left: 50px\"/>\r\n                        </div>\r\n                    </div>\r\n                    <div align=\"center\">\r\n                        <br /><br />\r\n                        <button onclick=\"location.href='#/home'\">Tagasi</button>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div id=\"footer\"></div>\r\n        </div>\r\n</template>"; });
+define('text!vaata_rajakaarti/vaata_rajakaarti.html', ['module'], function(module) { module.exports = "<template>\r\n    <div class=\"container pad\">\r\n            <header>\r\n                <img src=\"../pildid/header.jpg\" class=\"img-responsive\">\r\n            </header>\r\n            <nav>\r\n                <ul class=\"nav nav-justified\">\r\n                    <li><a href=\"index.html\">Avaleht</a></li>\r\n                    <li><a href=\"#/leitud_kettad\">Leitud kettad</a></li>\r\n                    <li><a href=\"#/kaotatud_kettad\">Kaotatud kettad</a></li>\r\n                    <li><a href=\"#/minu_kuulutused\">Minu kuulutused</a></li>\r\n                </ul>\r\n            </nav>\r\n            <div class=\"row\">\r\n                <div class=\"col-md-12\">\r\n                    <h3>Täpsem rajakaardi piirkond</h3>\r\n                    <div id=\"container2\">\r\n                         <div class=\"picturesOnTop\">\r\n                            <img src=${maps.mapLink} style=\"width:904px;height:556px\" style=\"position:absolute top: 0px; left: 50px\"/>\r\n                        </div>\r\n                        <div class=\"picturesOnTop\">\r\n                            <img src=${trackPictureURL} style=\"width:904px;height:556px\"\"position: absolute; top: 0px; left: 50px\"/>\r\n                        </div>\r\n                    </div>\r\n                    <div align=\"center\">\r\n                        <br /><br />\r\n                        <button click.delegate=\"goToPreviousView()\">Tagasi</button>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div id=\"footer\"></div>\r\n        </div>\r\n</template>"; });
 //# sourceMappingURL=app-bundle.js.map

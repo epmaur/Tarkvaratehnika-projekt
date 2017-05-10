@@ -18,6 +18,7 @@ export class uus_kuulutus{
     }
     
 	tracks = ['Alatskivi', 'Elva discgolfirada', 'Nõmme discgolfirada'];
+    tracksWithMaps=['Alatskivi']
     types = ['kaotatud', 'leitud'];
     selectedTrack= '';
 

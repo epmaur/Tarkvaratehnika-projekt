@@ -6,17 +6,21 @@ import {Router} from 'aurelia-router'
 export class vaata_rajakaarti {
     track;
     trackPictureURL;
+    previousView;
     
     constructor(router){
 		this.router = router;
 	}
     
     activate(params, routeData) {
-        var indexOfSeparator = routeData.name.indexOf("%NING%");
-        this.track = routeData.name.substring(0,indexOfSeparator);
-        this.trackPictureURL = routeData.name.substring(indexOfSeparator + 6);
+        var indexOfSeparator1 = routeData.name.indexOf("%NING%");
+        var indexOfSeparator2 = routeData.name.indexOf("%NING2%");
+        this.track = routeData.name.substring(0,indexOfSeparator1);
+        this.trackPictureURL = routeData.name.substring(indexOfSeparator1 + 6, indexOfSeparator2);
+        this.previousView = routeData.name.substring(indexOfSeparator2 + 7);
         console.log(this.track);
         console.log(this.trackPictureURL);
+        console.log(this.previousView);
     }
     
     attached() {
@@ -31,5 +35,9 @@ export class vaata_rajakaarti {
             
         console.log(this.maps);
 	};
+    
+    goToPreviousView() {
+        this.router.navigateToRoute(this.previousView);
+    }
     
 }

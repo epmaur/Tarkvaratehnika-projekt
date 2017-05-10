@@ -33,8 +33,10 @@ export class kaotatud_kettad{
 
     lookAtMap(trackName, trackPictureURL) {
         let vaata_rajakaarti = this.router.routes.find(x => x.name === 'vaata_rajakaarti');
-		vaata_rajakaarti.name = trackName + '%NING%' + trackPictureURL;
+		vaata_rajakaarti.name = trackName + '%NING%' + trackPictureURL + '%NING2%' + "kaotatud_kettad";
 		this.router.navigateToRoute('vaata_rajakaarti');
     }
+
+    
 
 }
