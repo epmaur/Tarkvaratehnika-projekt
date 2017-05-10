@@ -1,5 +1,6 @@
 package ttu.tteh.ad;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -29,13 +30,12 @@ public class Ad {
 	
 	@JsonProperty
 	String file;
-	/*
-	@Lob
-	@Column(name = "trackPictureURL", columnDefinition = "BLOB")
-	String trackPictureURL;*/
+	
+	@Column(name = "trackPictureURL", length = 65536)
+	String trackPictureURL;
 	
 	
-	public Ad(String disc, String type, String content, String track, String color, String file, String trackFile) {
+	public Ad(String disc, String type, String content, String track, String color, String file, String trackFile, String trackPictureURL) {
 		super();
 		this.disc = disc;
 		this.type = type;
@@ -44,6 +44,7 @@ public class Ad {
 		this.color = color;
 		this.file = file;
 		this.trackFile = trackFile;
+		this.trackPictureURL = trackPictureURL;
 		
 	}
 
@@ -113,19 +114,14 @@ public class Ad {
 	}
 	
 	
-	/*
 	@Column(name = "trackPictureURL", length = 65536)
 	public String getTrackPictureURL() {
 		return trackPictureURL;
 	}
-
 	@Column(name = "trackPictureURL", length = 65536)
 	public void setTrackPictureURL(String trackPictureURL) {
 		this.trackPictureURL = trackPictureURL;
-	}*/
-
-
-	
+	}
 
 
 	@JsonIgnore

@@ -39,6 +39,12 @@ li a:hover {
   margin-bottom: 0;
 }
 
+[class="picturesOnTop"] {
+    position:absolute;
+    top:0;
+    left:0;
+}
+
 [class="col-md-1"] {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -167,6 +173,16 @@ fieldset {
 
 #container{
     display:inline-block;
+    box-sizing: content-box;
+    margin: 0 auto; 
+    position:relative; 
+    border:5px solid black; 
+    border-radius: 10px; 
+    box-shadow: 0 5px 50px #333}
+
+#container2{
+    height: 556px;
+    width: 904px;
     box-sizing: content-box;
     margin: 0 auto; 
     position:relative; 

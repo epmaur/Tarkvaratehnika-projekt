@@ -1,0 +1,33 @@
+<template>
+    <div class="container pad">
+            <header>
+                <img src="../pildid/header.jpg" class="img-responsive">
+            </header>
+            <nav>
+                <ul class="nav nav-justified">
+                    <li><a href="index.html">Avaleht</a></li>
+                    <li><a href="#/leitud_kettad">Leitud kettad</a></li>
+                    <li><a href="#/kaotatud_kettad">Kaotatud kettad</a></li>
+                    <li><a href="#/minu_kuulutused">Minu kuulutused</a></li>
+                </ul>
+            </nav>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Täpsem rajakaardi piirkond</h3>
+                    <div id="container2">
+                         <div class="picturesOnTop">
+                            <img src=${maps.mapLink} style="width:904px;height:556px" style="position:absolute top: 0px; left: 50px"/>
+                        </div>
+                        <div class="picturesOnTop">
+                            <img src=${trackPictureURL} style="width:904px;height:556px""position: absolute; top: 0px; left: 50px"/>
+                        </div>
+                    </div>
+                    <div align="center">
+                        <br /><br />
+                        <button onclick="location.href='#/home'">Tagasi</button>
+                    </div>
+                </div>
+            </div>
+            <div id="footer"></div>
+        </div>
+</template>

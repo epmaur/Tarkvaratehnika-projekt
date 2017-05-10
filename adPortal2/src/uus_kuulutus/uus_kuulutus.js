@@ -11,9 +11,9 @@ export class uus_kuulutus{
     //dataURL;
     activate(params, routeData) {
         if (routeData.name != 'uus_kuulutus') {
-            /*
+            //console.log(routeData.name);
             this.adData.trackPictureURL = routeData.name;
-            console.log(this.adData.trackPictureURL);*/
+            //console.log(this.adData.trackPictureURL);
         }
     }
     
@@ -29,7 +29,7 @@ export class uus_kuulutus{
 		})
 			.then(response => response.json())
 			.then(data => {
-				console.log("Server saatis " + data.track);
+				console.log("Server saatis " + data.trackPictureURL);
 			this.uploadFile(data.id);
 		});
 

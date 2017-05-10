@@ -1,6 +1,12 @@
 import {HttpClient, json} from 'aurelia-fetch-client'
+import {inject} from 'aurelia-framework'
+import {Router} from 'aurelia-router'
 
+@inject(Router)
 export class kaotatud_kettad{
+    constructor(router){
+		this.router = router;
+	}
     ads = []
     types = ['kaotatud', 'leitud'];
 
@@ -24,5 +30,11 @@ export class kaotatud_kettad{
 			.then(data => this.ads = data);
             console.log("Ads filtered!")
     };
+
+    lookAtMap(trackName, trackPictureURL) {
+        let vaata_rajakaarti = this.router.routes.find(x => x.name === 'vaata_rajakaarti');
+		vaata_rajakaarti.name = trackName + '%NING%' + trackPictureURL;
+		this.router.navigateToRoute('vaata_rajakaarti');
+    }
 
 }
