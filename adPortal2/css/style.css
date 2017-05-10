@@ -30,7 +30,6 @@ li a:hover {
 }
 
 .row {
-  margin-bottom: 20px;
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -52,7 +51,7 @@ li a:hover {
   text-align: center;
 }
 
-[class="col-md-12"] {
+    [class="col-md-12"] {
   font-family: "Verdana",sans-serif;
   padding-top: 15px;
   padding-bottom: 15px;
@@ -62,6 +61,15 @@ li a:hover {
   border: 1px solid rgba(86,61,124,.2);
   text-align: center;
 }
+
+[class="col-md-4"] {
+  font-family: "Verdana",sans-serif;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid rgba(86,61,124,.2);
+  text-align: center;
+}
+
 [class="col-md-10*"] {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -96,13 +104,20 @@ li a:hover {
 body{
   background-image: url("../pildid/background.jpg");
   background-size: 100%;
-  background-repeat: no-repeat;  
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  opacity: 0.85;
+  filter: alpha(opacity=50);
+    
 }
 
 .container.pad {
   background-color: white;
   padding-left: 0px;
   padding-right: 0px;
+  border-radius: 10px;
 }
 [class="col-md-8"] {
   font-family: "Verdana",sans-serif;
@@ -122,13 +137,13 @@ body{
   height: 220px;
 }
 .search {
-  position: relative;
+  position:static;
   background: #333;
   max-width: 100%;
-  margin-top: 50px;
+  margin-top: 15px;
   float: right;
   padding: 50px;
-  text-align: center;
+  text-align: left;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .search input {
