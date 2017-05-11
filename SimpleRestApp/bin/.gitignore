@@ -1,2 +1,6 @@
-/application.yml
 /ttu/
+/ThreadLoggingInitializer.class
+/ThreadLoggingFilter.class
+/ThreadLoggingFilterBean.class
+/ThreadLoggingSupport.class
+/ThreadLoggingInitializer$1.class

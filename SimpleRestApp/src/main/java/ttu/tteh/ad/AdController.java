@@ -1,6 +1,7 @@
 package ttu.tteh.ad;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +22,12 @@ public class AdController {
 			consumes = "application/json")
 	public Ad addAd(@RequestBody Ad ad) {
 		return adService.addAd(ad);
+	}
+	
+	@RequestMapping(value="/googleauth", method=RequestMethod.POST,
+			consumes = "application/json")
+	public Map<String, String> googleAuth(@RequestBody Map<String, String> login) {
+		return login;
 	}
 	
 	@RequestMapping(value="/ads", method=RequestMethod.GET)

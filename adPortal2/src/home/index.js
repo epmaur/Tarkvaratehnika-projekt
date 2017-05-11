@@ -1,12 +1,24 @@
 import {HttpClient, json} from 'aurelia-fetch-client'
 import {inject} from 'aurelia-framework'
 import {Router} from 'aurelia-router'
+import {AuthService} from 'aurelia-auth';
 
-@inject(Router)
+
+
+
+//@inject(Router)
+@inject(AuthService)
 export class Home {
+    /*
     constructor(router){
 		this.router = router;
-	}
+	}*/
+    
+    constructor(auth){
+        this.auth = auth;
+    };
+    
+
     
     activate() {
         this.ads = []
@@ -23,5 +35,11 @@ export class Home {
 		vaata_rajakaarti.name = trackName + '%NING%' + trackPictureURL + '%NING2%' + "home";
 		this.router.navigateToRoute('vaata_rajakaarti');
     }
+    
+    log() {
+        console.log(this.auth.getMe());
+    }
+    
+    
     
 }

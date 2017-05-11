@@ -14,6 +14,7 @@ public class AdService {
 	public AdService(AdRepository adRepository) {
 		this.adRepository = adRepository;
 	}
+	
 
 	Ad addAd(Ad ad) {
 		// here you can do some validations etc before saving the user
