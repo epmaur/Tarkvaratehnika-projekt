@@ -9,8 +9,8 @@ export class rajakaardi_redigeerimine {
 	}
     track;
     activate(params, routeData) {
-        this.track = routeData.name;
-        console.log(routeData.name)
+        this.track = routeData.msg;
+        console.log(routeData.msg)
     }
     attached() {
         this.init()
@@ -41,7 +41,7 @@ export class rajakaardi_redigeerimine {
     save() {
         var dataURL = this.myCanvas.toDataURL();
 		let uus_kuulutus = this.router.routes.find(x => x.name === 'uus_kuulutus');
-		uus_kuulutus.name = dataURL;
+		uus_kuulutus.msg = dataURL;
 		this.router.navigateToRoute('uus_kuulutus');
         
     }

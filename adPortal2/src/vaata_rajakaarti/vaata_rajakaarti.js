@@ -13,11 +13,11 @@ export class vaata_rajakaarti {
 	}
     
     activate(params, routeData) {
-        var indexOfSeparator1 = routeData.name.indexOf("%NING%");
-        var indexOfSeparator2 = routeData.name.indexOf("%NING2%");
-        this.track = routeData.name.substring(0,indexOfSeparator1);
-        this.trackPictureURL = routeData.name.substring(indexOfSeparator1 + 6, indexOfSeparator2);
-        this.previousView = routeData.name.substring(indexOfSeparator2 + 7);
+        var indexOfSeparator1 = routeData.msg.indexOf("%NING%");
+        var indexOfSeparator2 = routeData.msg.indexOf("%NING2%");
+        this.track = routeData.msg.substring(0,indexOfSeparator1);
+        this.trackPictureURL = routeData.msg.substring(indexOfSeparator1 + 6, indexOfSeparator2);
+        this.previousView = routeData.msg.substring(indexOfSeparator2 + 7);
         console.log(this.track);
         console.log(this.trackPictureURL);
         console.log(this.previousView);

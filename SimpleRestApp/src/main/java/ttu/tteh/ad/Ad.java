@@ -141,6 +141,9 @@ public class Ad {
 
 	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	public String getFile() {
+		if (file == null) {
+			file = "pildid/pilti_pole.jpg";
+		}
 		return file;
 	}
 	@JsonIgnore

@@ -90,4 +90,8 @@ public class AdService {
 		ad.setTrackFile(newFilePath);
 		adRepository.save(ad);
 	}
+	
+	public Long deleteAdById(long id) {
+		return adRepository.deleteById(id);
+	}
 }

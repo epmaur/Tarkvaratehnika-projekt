@@ -19,36 +19,38 @@
                         <div class="col-md-1*">
                         </div>
                         <!--<div class="col-md-10">-->
-                            <form id="userform" submit.delegate ="addAd()" action="#/minu_kuulutused">
+                            <form class="userform" submit.delegate ="addAd()" action="#/minu_kuulutused">
                               <fieldset>
                                 <legend>Lisa uus kuulutus:</legend><br>
-                                  Ketas:<br>
+                                <h6 style="color:red;">Tärniga märgitud väljad on kohustuslikud!</h6>
+                                  Ketas: *<br>
                                 <input type="text" name="disc" value.bind = "adData.disc"><br>
-                                  Värv:<br>
+                                  Värv: *<br>
                                 <input type="text" name="color" value.bind = "adData.color"><br>
-                                  Tüüp:<br>
+                                  Tüüp: <br>
                                   <select name="type" value.bind = "adData.type">
                                       <option repeat.for = "type of types" value.bind="type">
                                         ${type}
                                       </option>
                                   </select><br>
-                                  Sisu:<br>
+                                  Sisu: *<br>
                                 <textarea name="content" value.bind = "adData.content"></textarea><br>
                                   Seotud rada: <br>
-                                <select value.bind = "adData.track">
+                                <select value.bind = "adData.track" change.delegate="isRedigatable(track)">
                                     <option repeat.for = "track of tracks" value.bind="track">
                                         ${track}
                                     </option>
                                 </select>
-                                  <input type="button" id="redigate" value="Redigeeri" click.delegate="choosePic()"/>
+                                  <button if.bind="isRedigatable()" click.delegate="choosePic()">Redigeeri</button>
                                   <br><p> </p>
                                 <label for="upload-file-input">Lisa kettast pilt:</label>
                                 <div class="upload">
                                     <input files.bind="adData.file" id="upload-file-input" type="file" name="uploadfile" accept="*" />
                                 </div>
-                                <input id="cancel" type="button" value="Tühista" onclick="location.href='#/minu_kuulutused'" />
-                                <input id="add" type="submit" value="Lisa" onclick="location.href='#/minu_kuulutused'"/>
-                                
+                                <button onclick="location.href='#/minu_kuulutused'">Tühista</button>
+                                <input type="submit" id="add" disabled.bind="!IsSubmittable" value="Lisa">
+                                <p>
+                                <p>
                               </fieldset>
                             </form>
                         <!--</div>-->

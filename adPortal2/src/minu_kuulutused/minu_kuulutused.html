@@ -21,7 +21,7 @@
                                 <h4>${ad.disc}</h4>
                                 <hr>
                                 <div class="col-sm-3">
-                                    <img src=${ad.file} style="width:100px;">
+                                    <img src="${ad.file}" style="width:100px;">
                                 </div>
                                 <div class="col-sm-9">
                                     <h5 style="text-align:left">${ad.content}</h5>
@@ -33,8 +33,7 @@
                                 </div>
                             </div>
                         <div class="col-md-1*">
-                            <a>Eemalda</a>
-                            <a>Muuda</a>
+                            <button click.delegate="deleteAd(ad.id)">Kustuta</button>
                         </div>
                         </div>
                     </div>  

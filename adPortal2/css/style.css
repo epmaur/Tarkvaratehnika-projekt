@@ -158,6 +158,8 @@ body{
   font-size: 14px;
 }
 
+
+
 textarea {
     width: 600px;
     height: 100px;
@@ -238,7 +240,7 @@ select::-ms-expand {
     background-color: #E9E9E9;
     box-shadow: 2px 2px 2px #888888;
 }
-
+/*
 #add {
     margin-left: 10px;
     border: 1px solid #111;
@@ -247,6 +249,15 @@ select::-ms-expand {
     border: 1px solid #ccc;
     background-color: #E9E9E9;
     box-shadow: 2px 2px 2px #888888;
+}*/
+
+button:disabled{
+    color:#CAC7C7;
+    
+}
+
+button{
+    padding: 3px 5px 3px 5px;
 }
 
 #cancel {

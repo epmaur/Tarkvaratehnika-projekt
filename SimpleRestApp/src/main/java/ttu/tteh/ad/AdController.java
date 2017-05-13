@@ -35,6 +35,12 @@ public class AdController {
 		return adService.getAllAds();
 	}
 	
+	@RequestMapping(value="/ads/delete", method=RequestMethod.POST,
+			consumes = "application/json")
+	public Long deleteAd(@RequestBody long id) {
+		return adService.deleteAdById(id);
+	}
+	
 /*
 	@RequestMapping(value = "/ads/{id}", method=RequestMethod.GET)
 	public Ad getAd(@PathVariable("id") long adId) {
