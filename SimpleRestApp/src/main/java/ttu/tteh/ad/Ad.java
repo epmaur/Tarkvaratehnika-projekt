@@ -24,6 +24,7 @@ public class Ad {
 	String track;
 	String color;
 	String addingDate;
+	String contact;
 	
 	@JsonProperty
 	String trackFile;
@@ -35,7 +36,8 @@ public class Ad {
 	String trackPictureURL;
 	
 	
-	public Ad(String disc, String type, String content, String track, String color, String file, String trackFile, String trackPictureURL) {
+	public Ad(String disc, String type, String content, String track, String color, String file, 
+			String trackFile, String trackPictureURL, String contact) {
 		super();
 		this.disc = disc;
 		this.type = type;
@@ -45,6 +47,7 @@ public class Ad {
 		this.file = file;
 		this.trackFile = trackFile;
 		this.trackPictureURL = trackPictureURL;
+		this.contact = contact;
 		
 	}
 
@@ -155,6 +158,18 @@ public class Ad {
 	public String getTrackFile() {
 		return trackFile;
 	}
+
+
+	public String getContact() {
+		return contact;
+	}
+
+
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
+	
+	
 	
 	
 	

@@ -28,13 +28,22 @@ export class minu_kuulutused{
 				console.log("Server saatis " + data);
             
 		});
+        
+        this.ads = []
+        let client2 = new HttpClient();
+        client2.fetch('http://localhost:8080/ads/')
+			.then(response => response.json())
+			.then(ads => this.ads = ads);
+		};
+        /*
         this.router.navigateToRoute(
           this.router.currentInstruction.config.name,
           this.router.currentInstruction.params,
           { replace: true }
         );
+        //this.activate();
         
-    };
+    };*/
         
         
 }

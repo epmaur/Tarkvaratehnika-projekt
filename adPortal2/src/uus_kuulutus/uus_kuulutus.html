@@ -36,13 +36,16 @@
                                   Sisu: *<br>
                                 <textarea name="content" value.bind = "adData.content"></textarea><br>
                                   Seotud rada: <br>
-                                <select value.bind = "adData.track" change.delegate="isRedigatable(track)">
+                                <select id="trackSelection" value.bind = "adData.track" change.delegate="isRedigatable(adData.track)">
                                     <option repeat.for = "track of tracks" value.bind="track">
                                         ${track}
                                     </option>
                                 </select>
-                                  <button if.bind="isRedigatable()" click.delegate="choosePic()">Redigeeri</button>
-                                  <br><p> </p>
+                                  <button if.bind="isRedigatable(adData.track)" click.delegate="choosePic()">Redigeeri</button>
+                                  <br><br>
+                                  Kontakt: * <br>
+                                  <input type="text" value.bind="adData.contact"><br>
+                                  <p> </p>
                                 <label for="upload-file-input">Lisa kettast pilt:</label>
                                 <div class="upload">
                                     <input files.bind="adData.file" id="upload-file-input" type="file" name="uploadfile" accept="*" />

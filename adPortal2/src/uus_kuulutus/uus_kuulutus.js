@@ -65,19 +65,15 @@ export class uus_kuulutus{
 			
     }
 
-    @computedFrom('adData.disc', 'adData.color', 'adData.content')
+    @computedFrom('adData.disc', 'adData.color', 'adData.content', 'adData.contact')
     get IsSubmittable() {
         let adData = this.adData;
 
-        return (adData.disc && adData.color && adData.content);
+        return (adData.disc && adData.color && adData.content && adData.contact);
     }
 
     isRedigatable(track) {
-        //let tracksWithMaps = this.tracksWithMaps;
-        console.log(this.track)
-        console.log(this.tracksWithMaps)
-        console.log(this.tracksWithMaps.indexOf(this.track)> -1)
-        return this.tracksWithMaps.indexOf(this.selectedTrack) > -1;
+        return this.tracksWithMaps.indexOf(track) > -1;
     }
 
 }

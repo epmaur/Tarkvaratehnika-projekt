@@ -14,6 +14,6 @@ public interface AdRepository extends CrudRepository<Ad, Long>{
 	public List<Ad> findAllByOrderByAddingDateDesc();
 	//public Ad findOne(long id);
 	@Transactional
-    Long deleteById(long id);
+    public Long deleteById(long id);
 
 }
