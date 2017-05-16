@@ -14,14 +14,14 @@
             <div class="row">
                 <div class="col-md-12">
                     <h3>Minu kuulutused</h3>
-                    <a href="#/uus_kuulutus" class="uus_kuulutus">Lisa uus kuulutus</a>
+                    <a href="#/uus_kuulutus" class="uus_kuulutus enjoy-css-nupp">Lisa uus kuulutus</a>
                     <div class="row">
                         <div repeat.for="ad of ads">
                             <div class="col-sm-12">
                                 <h4>${ad.disc}</h4>
                                 <hr>
                                 <div class="col-sm-3">
-                                    <img src="${ad.file}" style="width:100px;">
+                                    <img src="${ad.file}" style="width:120px;">
                                 </div>
                                 <div class="col-sm-9">
                                     <h5 style="text-align:left">${ad.content}</h5>
@@ -32,10 +32,8 @@
                                     <h6 style="text-align:left">Kontakt: ${ad.contact}</h6>
                                     <h6 style="text-align:left">Lisatud: ${ad.addingDate}</h6>
                                 </div>
+                                <button class="enjoy-css-nupp" click.delegate="deleteAd(ad.id)">Kustuta</button>
                             </div>
-                        <div class="col-md-1*">
-                            <button click.delegate="deleteAd(ad.id)">Kustuta</button>
-                        </div>
                         </div>
                     </div>  
                 </div>

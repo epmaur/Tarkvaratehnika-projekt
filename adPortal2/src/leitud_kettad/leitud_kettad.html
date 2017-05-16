@@ -21,7 +21,7 @@
                         <h4>${ad.disc}</h4>
                         <hr>
                         <div class="col-sm-3">
-                            <img src=${ad.file} style="width:100px;">
+                            <img src=${ad.file} style="width:120px;">
                         </div>
                         <div class="col-sm-9">
                             <h5 style="text-align:left">${ad.content}</h5>
@@ -31,7 +31,7 @@
                             <h6 style="text-align:left">Kontakt: ${ad.contact}</h6>
                             <h6 style="text-align:left">Lisatud: ${ad.addingDate}</h6>
                         </div>
-                        <button if.bind=ad.trackPictureURL id="vaata_rajakaarti" click.delegate="lookAtMap(ad.track, ad.trackPictureURL)">Vaata rajakaarti</button>
+                        <button class="enjoy-css-nupp" if.bind=ad.trackPictureURL id="vaata_rajakaarti" click.delegate="lookAtMap(ad.track, ad.trackPictureURL)">Vaata rajakaarti</button>
                     </div> 
                 </div>
                 <div class="col-md-1*">
