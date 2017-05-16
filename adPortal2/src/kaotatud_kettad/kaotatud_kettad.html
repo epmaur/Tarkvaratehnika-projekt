@@ -14,6 +14,8 @@
             <div class="row">
                 <div class="col-md-8">
                     <h3>Kaotatud Kettad</h3>
+                    <div class="col-md-1*">
+                </div>
                     <div repeat.for="ad of ads">
                         <div class="col-sm-12">
                             <h4>${ad.disc}</h4>
@@ -31,6 +33,8 @@
                             </div>
                             <button class="enjoy-css-nupp" if.bind=ad.trackPictureURL id="vaata_rajakaarti" click.delegate="lookAtMap(ad.track, ad.trackPictureURL)">Vaata rajakaarti</button>
                         </div> 
+                        <div class="col-md-1*">
+                </div>
                     </div>
                 </div>
                 <div class="col-md-4">

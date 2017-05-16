@@ -8,6 +8,7 @@ ul {
 }
 
 li {
+    font-size: 18px;
     float: left;
     border-right:1px solid #bbb;
 }
@@ -27,7 +28,7 @@ li a:hover {
     background-color: #111;
 }
 .active {
-    font-weight: 800;
+    font-weight: 600;
 }
 
 .row {
@@ -192,9 +193,11 @@ fieldset {
 #image{position:absolute;z-index:1;}
 
 #container{
+    height: 556px;
+    width: 904px;
     display:inline-block;
     box-sizing: content-box;
-    margin: 0 auto; 
+    margin: 0; 
     position:relative; 
     border:5px solid black; 
     border-radius: 10px; 

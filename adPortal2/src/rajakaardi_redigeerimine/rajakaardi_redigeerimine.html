@@ -14,9 +14,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <h3>Raja redigeerimine</h3>
+                    <p></p>
                     <div id="container">
-                        <img id='image' src=${maps.mapLink} alt="" width="1000" height="550" />
-                        <canvas id="myCanvas" width="1000" height="650" mousedown.delegate="canvasMouseDown($event, $this)" mouseleave.delegate=canvasMouseLeave($event)
+                        <img id='image' src=${maps.mapLink} alt="" width="904" height="556" />
+                        <canvas id="myCanvas" width="904" height="556" mousedown.delegate="canvasMouseDown($event, $this)" mouseleave.delegate=canvasMouseLeave($event)
                                 mouseup.delegate=canvasMouseUp($event) mousemove.delegate="canvasMouseMove($event, $this)"></canvas>
                     </div>
                     <div align="center">
@@ -33,7 +34,7 @@
                         </option>
                         </select>
                         <button click.delegate="save()">Salvesta</button>
-                        <button onclick="location.href='#/minu_kuulutused'">Tühista</button>
+                        <button onclick="location.href='#/uus_kuulutus'">Tühista</button>
                     </div>
                 </div>
             </div>
