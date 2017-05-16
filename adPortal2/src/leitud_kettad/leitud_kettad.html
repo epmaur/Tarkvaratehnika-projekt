@@ -14,8 +14,6 @@
         <div class="row">
             <div class="col-md-8">
                 <h3>Leitud Kettad</h3>
-                <div class="col-md-1*">
-                </div>
                 <div repeat.for="ad of ads">
                     <div class="col-sm-12">
                         <h4>${ad.disc}</h4>
@@ -36,19 +34,10 @@
                 </div>
                 <div class="col-md-1*">
                 </div>
-             <!---   <hr>
-                <div class="col-md-1*">
-                </div>
-                <div class="col-md-6*">
-                    <img src="../pildid/ketas.jpg" class="pilt">
-                    <h4>Leitud punane Dominator. Asukoht Keila. Võta ühendust, kui tead täpset ketta kaotuskohta ja andmeid. Tel. 5171553</h4>
-                </div>
-                <div class="col-md-1*">
-                </div>-->
             </div>
             <div class="col-md-4">
                  <form class="search" submit.delegate= "filterAds()">
-                    <h3 style="color:white">Otsing</h3>
+                    <h3 style="color:white; text-align:center">Otsing</h3>
                     <select name="type" style="width:100%" value.bind = "filterData.type">
                         <option repeat.for = "type of types" value.bind="type">
                             ${type}
