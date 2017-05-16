@@ -33,11 +33,10 @@ export class uus_kuulutus{
 			.then(response => response.json())
 			.then(data => {
 				console.log("Server saatis " + data.track);
-        
-            if (data.file != 'pildid/pilti_pole.jpg') {
-                this.uploadFile(data.id);
-            }
-            this.router.navigateToRoute('minu_kuulutused');
+            
+            this.uploadFile(data.id);
+            
+            
 		});
         
 		console.log("Method executed!")
@@ -54,14 +53,19 @@ export class uus_kuulutus{
 	uploadFile(id) {
 		let client = new HttpClient();
 		let formData = new FormData();
-		formData.append("uploadfile", this.adData.file[0]);
-  		client.fetch('http://localhost:8080/ads/file/' + id, { 
-     		method: 'POST', 
-      		body: formData
-    })
-      		.then(response => response.json())
-      		.then(data => console.log(data.message))
-      		.catch(error => console.log(error));
+        if (this.adData.file != null) {
+            formData.append("uploadfile", this.adData.file[0]);
+            console.log(this.adData.file[0]);
+            client.fetch('http://localhost:8080/ads/file/' + id, { 
+                method: 'POST', 
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => console.log(data.message))
+                .catch(error => console.log(error));
+        }
+        
+        this.router.navigateToRoute('minu_kuulutused');
 			
     }
 

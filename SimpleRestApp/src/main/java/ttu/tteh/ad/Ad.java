@@ -36,7 +36,7 @@ public class Ad {
 	String trackPictureURL;
 	
 	
-	public Ad(String disc, String type, String content, String track, String color, String file, 
+	public Ad(String disc, String type, String content, String track, String color,
 			String trackFile, String trackPictureURL, String contact) {
 		super();
 		this.disc = disc;
@@ -44,10 +44,11 @@ public class Ad {
 		this.content = content;
 		this.track = track;
 		this.color = color;
-		this.file = file;
+		this.file = "pildid/pilti_pole.jpg";
 		this.trackFile = trackFile;
 		this.trackPictureURL = trackPictureURL;
 		this.contact = contact;
+		System.out.println("VAATA SIIN ON KONSTRUKTOR: " + this.file);
 		
 	}
 
@@ -129,7 +130,7 @@ public class Ad {
 
 	@JsonIgnore
 	public void setFile(String file){
-		this.file=file;
+		this.file = file;
 	}
 	
 	public String getAddingDate() {
@@ -143,7 +144,7 @@ public class Ad {
 
 
 	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
-	public String getFile() {
+	public String getFile() {	
 		if (file == null) {
 			file = "pildid/pilti_pole.jpg";
 		}

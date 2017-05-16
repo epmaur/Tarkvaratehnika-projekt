@@ -14,7 +14,7 @@ public class SimpleRestAppApplication {
 		SpringApplication.run(SimpleRestAppApplication.class, args);
 	}
 	
-    @Bean
+	@Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
