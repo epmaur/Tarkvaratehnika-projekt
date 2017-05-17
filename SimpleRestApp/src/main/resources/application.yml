@@ -1,9 +1,4 @@
 spring:
-    datasource:
-        url: jdbc:mariadb://127.0.0.1:3306/myapp
-        username: root
-        password: tupsud
-
     jpa:
         hibernate:
             ddl-auto: update
@@ -13,7 +8,19 @@ spring:
         multipart:
             max-file-size: 3MB
             max-request-size: 20MB
-
+security:
+    oauth2:
+      client:
+        clientId: 661115396114-g2gskun6b0l7cuit2978rs51p21hpjp7.apps.googleusercontent.com
+        clientSecret: m8KQWCvMQAVbbL2tgKj4SWOd
+        accessTokenUri: https://www.googleapis.com/oauth2/v3/token
+        userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
+        clientAuthenticationScheme: query
+        scope: profile email
+      resource:
+        userInfoUri: https://www.googleapis.com/plus/v1/people/me
+        preferTokenInfo: false
+      
 desktop:
     paths:
         uploadedFiles: C:\Users\Epu\Desktop\Tarkvaratehnika-projekt\adPortal2\pildid
@@ -21,4 +28,5 @@ desktop:
 management:
        port: 9002
        security:
-            enabled: false 
+            enabled: false
+            
